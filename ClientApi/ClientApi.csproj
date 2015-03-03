@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>52a6db1a-7fa7-4ac0-8d02-ddc02177361b</ProjectGuid>
+    <ProjectGuid>{26217A62-D91E-4871-AB3C-03EA6FCD95B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClientApi</RootNamespace>
@@ -41,8 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Networking\IPacket.cs" />
+    <Compile Include="Networking\PacketFactory.cs" />
+    <Compile Include="Networking\PacketId.cs" />
+    <Compile Include="Networking\PacketIdAttribute.cs" />
+    <Compile Include="Networking\Packets\ClientVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\StreamExt.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
