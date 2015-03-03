@@ -2,11 +2,50 @@ using Microsoft.Xna.Framework;
 using System;
 using System.IO;
 using System.IO.Compression;
+using ClientApi.Networking;
+
 namespace Terraria
 {
 	public class NetMessage
 	{
 		public static MessageBuffer[] buffer = new MessageBuffer[257];
+
+		public static void SendData(IPacket packet)
+		{
+			lock (NetMessage.buffer[256].writeBuffer)
+			{
+				MemoryStream output = new MemoryStream(NetMessage.buffer[256].writeBuffer); //get buffer
+				BinaryWriter binaryWriter = new BinaryWriter(output); //make binary writer
+				long position = binaryWriter.BaseStream.Position; //get starting position of packet
+				binaryWriter.BaseStream.Position += 2L; //move two bytes over for the length of the packet
+				binaryWriter.Write((byte) 67); //write the packet type (67 is the one we had added for us)
+				using (var stream = new MemoryStream())
+				{
+					stream.WriteInt8((byte)PacketFactory.Instance.GetPacketId(packet)); //write the custom packet id
+					packet.Write(stream); //push the packet into a stream
+					binaryWriter.Write(stream.GetBuffer()); //write the packet to the binary writer
+				}
+				long end = binaryWriter.BaseStream.Position; //get the end position
+				long length = end - position; //get the length
+
+				binaryWriter.BaseStream.Position = position; //move to the start
+				binaryWriter.Write((short) length); //write the packet length
+				binaryWriter.BaseStream.Position = end; //move back to the end
+				try
+				{
+					NetMessage.buffer[256].spamCount++;
+					Main.txMsg++;
+					Main.txData += (short)length;
+					Main.txMsgType[67]++;
+					Main.txDataType[67] += (short)length;
+					Netplay.clientSock.networkStream.BeginWrite(NetMessage.buffer[256].writeBuffer, 0, (short)length, new AsyncCallback(Netplay.clientSock.ClientWriteCallBack), Netplay.clientSock.networkStream);
+				}
+				catch
+				{
+				}
+			}
+		}
+		
 		public static void SendData(int msgType, int remoteClient = -1, int ignoreClient = -1, string text = "", int number = 0, float number2 = 0f, float number3 = 0f, float number4 = 0f, int number5 = 0)
 		{
 			if (Main.netMode == 0)
@@ -23,7 +62,7 @@ namespace Terraria
 				MemoryStream output = new MemoryStream(NetMessage.buffer[num].writeBuffer);
 				BinaryWriter binaryWriter = new BinaryWriter(output);
 				long position = binaryWriter.BaseStream.Position;
-				binaryWriter.BaseStream.Position += 2L;
+				
 				binaryWriter.Write((byte)msgType);
 				switch (msgType)
 				{
