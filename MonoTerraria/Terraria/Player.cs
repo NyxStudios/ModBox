@@ -6404,7 +6404,7 @@ namespace Terraria
 							list8.Add(tuple8);
 						}
 						// TODO Inveistage in dotPEek i dont even want to typ ethis anymore >_<
-						//Main.tile[tuple8.Item1, tuple8.Item2];
+						Tile tile = Main.tile[tuple8.Item1, tuple8.Item2];
 						if (Collision.HitWallSubstep(tuple8.Item1, tuple8.Item2))
 						{
 							list8.Add(tuple8);

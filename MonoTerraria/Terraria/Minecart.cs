@@ -518,8 +518,7 @@ namespace Terraria
 			float num = value2.Length();
 			value2.Normalize();
 			Vector2 value3 = vector2;
-			// TODO Investigate in dotPEek
-			//Position + Velocity;
+			Vector2 unknownValue = Position + Velocity;
 			Tile tile = null;
 			bool flag = false;
 			bool flag2 = true;

@@ -10422,19 +10422,14 @@ namespace Terraria
 		public static extern short GetKeyState(int keyCode);
 		public static string GetInputText(string oldString)
 		{
-			// TODO Investigate this in dotPeek
-			/*
-			Main.<>c__DisplayClassc <>c__DisplayClassc = new Main.<>c__DisplayClassc();
-			<>c__DisplayClassc.oldString = oldString;
 			if (!Main.hasFocus)
 			{
-				return <>c__DisplayClassc.oldString;
+				return oldString;
 			}
 			Main.inputTextEnter = false;
 			Main.inputTextEscape = false;
-			string text = <>c__DisplayClassc.oldString;
-			<>c__DisplayClassc.newKeys = "";*/
-			var text = "";
+			string text = oldString;
+			var newKeys = "";
 			if (text == null)
 			{
 				text = "";
@@ -10448,44 +10443,38 @@ namespace Terraria
 				}
 				else if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.X) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.X))
 				{
-					// TODO Investigate with dotPeek
-					/*
-					Thread thread = new Thread(delegate
+					Thread thread = new Thread((ThreadStart)(delegate
 					{
-						if (<>c__DisplayClassc.oldString.Length > 0)
+						if (oldString.Length > 0)
 						{
-							Clipboard.SetText(<>c__DisplayClassc.oldString);
+							Clipboard.SetText(oldString);
 						}
-					});
+					}));
 					thread.SetApartmentState(ApartmentState.STA);
 					thread.Start();
 					while (thread.IsAlive)
 					{
 					}
-					text = "";*/
+					text = "";
 				}
 				else if ((Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)) || (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert)))
 				{
-					// TODO Investigate with dotPeek
-					/*
-					Thread thread2 = new Thread(delegate
+					Thread thread2 = new Thread((ThreadStart)(delegate
 					{
-						if (<>c__DisplayClassc.oldString.Length > 0)
+						if (oldString.Length > 0)
 						{
-							Clipboard.SetText(<>c__DisplayClassc.oldString);
+							Clipboard.SetText(oldString);
 						}
-					});
+					}));
 					thread2.SetApartmentState(ApartmentState.STA);
 					thread2.Start();
 					while (thread2.IsAlive)
 					{
-					}*/
+					}
 				}
 				else if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V))
 				{
-					// TODO Investigate with dotPeek
-					/*
-					Thread thread3 = new Thread(delegate
+					Thread thread3 = new Thread((ThreadStart)(delegate
 					{
 						string text3 = Clipboard.GetText();
 						for (int l = 0; l < text3.Length; l++)
@@ -10495,13 +10484,13 @@ namespace Terraria
 								text3 = text3.Replace(string.Concat(text3[l--]), "");
 							}
 						}
-						<>c__DisplayClassc.newKeys += text3;
-					});
+						newKeys += text3;
+					}));
 					thread3.SetApartmentState(ApartmentState.STA);
 					thread3.Start();
 					while (thread3.IsAlive)
 					{
-					}*/
+					}
 				}
 			}
 			else
@@ -10510,27 +10499,23 @@ namespace Terraria
 				{
 					if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Delete) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Delete))
 					{
-						// TODO Investigate with dotPeek
-						/*
-						Thread thread4 = new Thread(delegate
+						Thread thread4 = new Thread((ThreadStart)(delegate
 						{
-							if (<>c__DisplayClassc.oldString.Length > 0)
+							if (oldString.Length > 0)
 							{
-								Clipboard.SetText(<>c__DisplayClassc.oldString);
+								Clipboard.SetText(oldString);
 							}
-						});
+						}));
 						thread4.SetApartmentState(ApartmentState.STA);
 						thread4.Start();
 						while (thread4.IsAlive)
 						{
 						}
-						text = "";*/
+						text = "";
 					}
 					if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert))
 					{
-						// TODO Investigate with dotPeek
-						/*
-						Thread thread5 = new Thread(delegate
+						Thread thread5 = new Thread((ThreadStart)(delegate
 						{
 							string text3 = Clipboard.GetText();
 							for (int l = 0; l < text3.Length; l++)
@@ -10540,13 +10525,13 @@ namespace Terraria
 									text3 = text3.Replace(string.Concat(text3[l--]), "");
 								}
 							}
-							<>c__DisplayClassc.newKeys += text3;
-						});
+							newKeys += text3;
+						}));
 						thread5.SetApartmentState(ApartmentState.STA);
 						thread5.Start();
 						while (thread5.IsAlive)
 						{
-						}*/
+						}
 					}
 				}
 				for (int i = 0; i < Main.keyCount; i++)
@@ -10563,20 +10548,14 @@ namespace Terraria
 					}
 					else if (num >= 32 && num != 127)
 					{
-						// TODO Investigate in dotPeek
-						/*
-						Main.<>c__DisplayClassc expr_2D1 = <>c__DisplayClassc;
-						expr_2D1.newKeys += str;*/
+						newKeys += str;
 						continue;
 					}
 				}
 			}
 			
 			Main.keyCount = 0;
-			// TODO Investigate in dotPeek
-			/*
-			text += <>c__DisplayClassc.newKeys;
-			*/
+			text += newKeys;
 			Main.oldInputText = Main.inputText;
 			Main.inputText = Keyboard.GetState();
 			Microsoft.Xna.Framework.Input.Keys[] pressedKeys = Main.inputText.GetPressedKeys();

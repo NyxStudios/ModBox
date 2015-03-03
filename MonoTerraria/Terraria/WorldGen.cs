@@ -20154,9 +20154,10 @@ namespace Terraria
 		}
 		public static void paintEffect(int x, int y, byte color, byte oldColor)
 		{
-			// TODO This has something to do with white color or something iirc, dotPeek it up
-			int color2 = oldColor;//(int)(color ?? oldColor);
-			Color newColor = WorldGen.paintColor(color2);
+			int color1 = color;
+			if (color == 0)
+				color1 = oldColor;
+			Color newColor = WorldGen.paintColor(color1);
 			for (int i = 0; i < 10; i++)
 			{
 				int num = Dust.NewDust(new Vector2((float)(x * 16), (float)(y * 16)), 16, 16, 143, 0f, 0f, 50, newColor, 1f);
