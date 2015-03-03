@@ -44,7 +44,7 @@ namespace Terraria
 				{
 					Player player = Main.player[number];
 					binaryWriter.Write((byte)number);
-					binaryWriter.Write(player.male ? 0 : 1);
+					binaryWriter.Write((byte)(player.male ? 0 : 1));
 					binaryWriter.Write((byte)player.hair);
 					binaryWriter.Write(text);
 					binaryWriter.Write(player.hairDye);
