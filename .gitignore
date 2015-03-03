@@ -2,3 +2,5 @@
 /*.suo
 /Terraria/Terraria/Program.cs
 /Terraria/Terraria/Steam.cs
+/MonoTerraria/bin
+/MonoTerraria/obj
