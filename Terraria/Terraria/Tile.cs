@@ -226,7 +226,7 @@ namespace Terraria
 		}
 		public byte wallColor()
 		{
-			return this.bTileHeader & 31;
+			return (byte)(this.bTileHeader & 31);
 		}
 		public void wallColor(byte wallColor)
 		{
@@ -234,7 +234,7 @@ namespace Terraria
 			{
 				wallColor = 30;
 			}
-			this.bTileHeader = ((this.bTileHeader & 224) | wallColor);
+			this.bTileHeader = (byte)(((this.bTileHeader & 224) | wallColor));
 		}
 		public bool lava()
 		{
@@ -244,7 +244,7 @@ namespace Terraria
 		{
 			if (lava)
 			{
-				this.bTileHeader = ((this.bTileHeader & 159) | 32);
+				this.bTileHeader = (byte)(((this.bTileHeader & 159) | 32));
 				return;
 			}
 			this.bTileHeader &= 223;
@@ -257,7 +257,7 @@ namespace Terraria
 		{
 			if (honey)
 			{
-				this.bTileHeader = ((this.bTileHeader & 159) | 64);
+				this.bTileHeader = (byte)(((this.bTileHeader & 159) | 64));
 				return;
 			}
 			this.bTileHeader &= 191;

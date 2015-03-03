@@ -8361,8 +8361,8 @@ namespace Terraria
 							Main.butterflyCageMode[num13, num14] = (byte)Main.rand.Next(5);
 							if (Main.rand.Next(2) == 0)
 							{
-								byte* expr_38D9 = ref Main.butterflyCageMode[num13, num14];
-								*expr_38D9 += 10;
+								byte expr_38D9 = Main.butterflyCageMode[num13, num14];
+								expr_38D9 += 10;
 							}
 						}
 						int num15 = Main.rand.Next(3, 16);
@@ -8404,13 +8404,13 @@ namespace Terraria
 										{
 											if (Main.butterflyCageMode[num13, num14] >= 10)
 											{
-												byte* expr_3AAD = ref Main.butterflyCageMode[num13, num14];
-												*expr_3AAD -= 10;
+												byte expr_3AAD = Main.butterflyCageMode[num13, num14];
+												expr_3AAD -= 10;
 											}
 											else
 											{
-												byte* expr_3ACF = ref Main.butterflyCageMode[num13, num14];
-												*expr_3ACF += 10;
+												byte expr_3ACF = Main.butterflyCageMode[num13, num14];
+												expr_3ACF += 10;
 											}
 										}
 									}
@@ -8434,13 +8434,13 @@ namespace Terraria
 									{
 										if (Main.butterflyCageMode[num13, num14] >= 10)
 										{
-											byte* expr_3BDA = ref Main.butterflyCageMode[num13, num14];
-											*expr_3BDA -= 10;
+											byte expr_3BDA = Main.butterflyCageMode[num13, num14];
+											expr_3BDA -= 10;
 										}
 										else
 										{
-											byte* expr_3BFC = ref Main.butterflyCageMode[num13, num14];
-											*expr_3BFC += 10;
+											byte expr_3BFC = Main.butterflyCageMode[num13, num14];
+											expr_3BFC += 10;
 										}
 									}
 								}
@@ -10421,6 +10421,8 @@ namespace Terraria
 		public static extern short GetKeyState(int keyCode);
 		public static string GetInputText(string oldString)
 		{
+			// TODO Investigate this in dotPeek
+			/*
 			Main.<>c__DisplayClassc <>c__DisplayClassc = new Main.<>c__DisplayClassc();
 			<>c__DisplayClassc.oldString = oldString;
 			if (!Main.hasFocus)
@@ -10430,7 +10432,8 @@ namespace Terraria
 			Main.inputTextEnter = false;
 			Main.inputTextEscape = false;
 			string text = <>c__DisplayClassc.oldString;
-			<>c__DisplayClassc.newKeys = "";
+			<>c__DisplayClassc.newKeys = "";*/
+			var text = "";
 			if (text == null)
 			{
 				text = "";
@@ -10444,6 +10447,8 @@ namespace Terraria
 				}
 				else if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.X) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.X))
 				{
+					// TODO Investigate with dotPeek
+					/*
 					Thread thread = new Thread(delegate
 					{
 						if (<>c__DisplayClassc.oldString.Length > 0)
@@ -10456,10 +10461,12 @@ namespace Terraria
 					while (thread.IsAlive)
 					{
 					}
-					text = "";
+					text = "";*/
 				}
 				else if ((Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)) || (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert)))
 				{
+					// TODO Investigate with dotPeek
+					/*
 					Thread thread2 = new Thread(delegate
 					{
 						if (<>c__DisplayClassc.oldString.Length > 0)
@@ -10471,10 +10478,12 @@ namespace Terraria
 					thread2.Start();
 					while (thread2.IsAlive)
 					{
-					}
+					}*/
 				}
 				else if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V))
 				{
+					// TODO Investigate with dotPeek
+					/*
 					Thread thread3 = new Thread(delegate
 					{
 						string text3 = Clipboard.GetText();
@@ -10491,7 +10500,7 @@ namespace Terraria
 					thread3.Start();
 					while (thread3.IsAlive)
 					{
-					}
+					}*/
 				}
 			}
 			else
@@ -10500,6 +10509,8 @@ namespace Terraria
 				{
 					if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Delete) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Delete))
 					{
+						// TODO Investigate with dotPeek
+						/*
 						Thread thread4 = new Thread(delegate
 						{
 							if (<>c__DisplayClassc.oldString.Length > 0)
@@ -10512,10 +10523,12 @@ namespace Terraria
 						while (thread4.IsAlive)
 						{
 						}
-						text = "";
+						text = "";*/
 					}
 					if (Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert) && !Main.oldInputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Insert))
 					{
+						// TODO Investigate with dotPeek
+						/*
 						Thread thread5 = new Thread(delegate
 						{
 							string text3 = Clipboard.GetText();
@@ -10532,7 +10545,7 @@ namespace Terraria
 						thread5.Start();
 						while (thread5.IsAlive)
 						{
-						}
+						}*/
 					}
 				}
 				for (int i = 0; i < Main.keyCount; i++)
@@ -10549,13 +10562,20 @@ namespace Terraria
 					}
 					else if (num >= 32 && num != 127)
 					{
+						// TODO Investigate in dotPeek
+						/*
 						Main.<>c__DisplayClassc expr_2D1 = <>c__DisplayClassc;
-						expr_2D1.newKeys += str;
+						expr_2D1.newKeys += str;*/
+						continue;
 					}
 				}
 			}
+			
 			Main.keyCount = 0;
+			// TODO Investigate in dotPeek
+			/*
 			text += <>c__DisplayClassc.newKeys;
+			*/
 			Main.oldInputText = Main.inputText;
 			Main.inputText = Keyboard.GetState();
 			Microsoft.Xna.Framework.Input.Keys[] pressedKeys = Main.inputText.GetPressedKeys();
@@ -13753,7 +13773,7 @@ namespace Terraria
 											expr_5DE0_cp_0.velocity.Y = expr_5DE0_cp_0.velocity.Y - 2f;
 											Main.dust[num127].noGravity = true;
 										}
-										color.A = Main.mouseTextColor / 2;
+										color.A = (byte)(Main.mouseTextColor / 2);
 										color.G = Main.mouseTextColor;
 										color.B = Main.mouseTextColor;
 									}
@@ -13765,8 +13785,8 @@ namespace Terraria
 											int num128 = Dust.NewDust(new Vector2((float)(j * 16), (float)(i * 16)), 16, 16, 43, 0f, 0f, 254, newColor, 0.5f);
 											Main.dust[num128].velocity *= 0f;
 										}
-										byte b3 = (Main.mouseTextColor + color.G * 2) / 3;
-										byte b4 = (Main.mouseTextColor + color.B * 2) / 3;
+										byte b3 = (byte)((Main.mouseTextColor + color.G * 2) / 3);
+										byte b4 = (byte)((Main.mouseTextColor + color.B * 2) / 3);
 										if (b3 > color.G)
 										{
 											color.G = b3;
@@ -14030,9 +14050,9 @@ namespace Terraria
 											}
 											Color color7 = color;
 											Color color8 = array3[num132];
-											color7.R = (color.R + color8.R) / 2;
-											color7.G = (color.G + color8.G) / 2;
-											color7.B = (color.B + color8.B) / 2;
+											color7.R = (byte)((color.R + color8.R) / 2);
+											color7.G = (byte)((color.G + color8.G) / 2);
+											color7.B = (byte)((color.B + color8.B) / 2);
 											if (flag15)
 											{
 												color7 = tile.actColor(color7);
@@ -14077,9 +14097,9 @@ namespace Terraria
 											}
 											Color color9 = color;
 											Color color10 = array3[num135];
-											color9.R = (color.R + color10.R) / 2;
-											color9.G = (color.G + color10.G) / 2;
-											color9.B = (color.B + color10.B) / 2;
+											color9.R = (byte)((color.R + color10.R) / 2);
+											color9.G = (byte)((color.G + color10.G) / 2);
+											color9.B = (byte)((color.B + color10.B) / 2);
 											if (flag17)
 											{
 												color9 = tile.actColor(color9);
@@ -14956,7 +14976,7 @@ namespace Terraria
 				}
 				if (type3 == 334 && tile7.frameX >= 5000)
 				{
-					short arg_B6AA_0 = tile7.frameY / 18;
+					short arg_B6AA_0 = (short)(tile7.frameY / 18);
 					int num269 = (int)tile7.frameX;
 					int num270 = 0;
 					int num271 = num269 % 5000;
@@ -16566,7 +16586,7 @@ namespace Terraria
 								else if (Main.npc[i].type >= 87 && Main.npc[i].type <= 92)
 								{
 									Color alpha2 = Main.npc[i].GetAlpha(color12);
-									byte b4 = (Main.tileColor.R + Main.tileColor.G + Main.tileColor.B) / 3;
+									byte b4 = (byte)((Main.tileColor.R + Main.tileColor.G + Main.tileColor.B) / 3);
 									if (alpha2.R < b4)
 									{
 										alpha2.R = b4;
@@ -18203,7 +18223,8 @@ namespace Terraria
 					color22 = Color.Lerp(color22, Color.Blue, 0.5f);
 					color22 = Main.projectile[i].GetAlpha(color22);
 					color22 *= (float)(num106 - m) / 15f;
-					Main.projectile[i].oldPos[m] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
+					// TODO investigate this in dotPeek 
+					//Main.projectile[i].oldPos[m] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
 					Main.spriteBatch.Draw(texture2D2, Main.projectile[i].oldPos[m] + new Vector2((float)Main.projectile[i].width, (float)Main.projectile[i].height) / 2f - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y3, texture2D2.Width, num105)), color22, Main.projectile[i].rotation, new Vector2((float)texture2D2.Width / 2f, (float)num105 / 2f), MathHelper.Lerp(Main.projectile[i].scale, value3, (float)m / 15f), effects, 0f);
 				}
 				Main.spriteBatch.Draw(texture2D2, Main.projectile[i].center() - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y3, texture2D2.Width, num105)), Main.projectile[i].GetAlpha(color21), Main.projectile[i].rotation, new Vector2((float)texture2D2.Width / 2f, (float)num105 / 2f), Main.projectile[i].scale, effects, 0f);
@@ -18223,7 +18244,8 @@ namespace Terraria
 					Color color23 = color21;
 					color23 = Main.projectile[i].GetAlpha(color23);
 					color23 *= (float)(num109 - n) / 15f;
-					Main.projectile[i].oldPos[n] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
+					// TODO investigate this in dotPeek
+					//Main.projectile[i].oldPos[n] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
 					Main.spriteBatch.Draw(texture2D3, Main.projectile[i].oldPos[n] + new Vector2((float)Main.projectile[i].width, (float)Main.projectile[i].height) / 2f - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y4, texture2D3.Width, num108)), color23, Main.projectile[i].rotation, new Vector2((float)texture2D3.Width / 2f, (float)num108 / 2f), MathHelper.Lerp(Main.projectile[i].scale, value4, (float)n / 15f), effects, 0f);
 				}
 				Main.spriteBatch.Draw(texture2D3, Main.projectile[i].center() - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y4, texture2D3.Width, num108)), Main.projectile[i].GetAlpha(color21), Main.projectile[i].rotation, new Vector2((float)texture2D3.Width / 2f, (float)num108 / 2f), Main.projectile[i].scale, effects, 0f);
@@ -18267,7 +18289,8 @@ namespace Terraria
 						color24 = Main.projectile[i].GetAlpha(color24);
 						color24 *= (float)(num114 - num116) / 15f;
 						Color alpha2 = Main.projectile[i].GetAlpha(color21);
-						Main.projectile[i].oldPos[num116] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
+						// TODO investigate this in dotPeek
+						//Main.projectile[i].oldPos[num116] - Main.screenPosition + new Vector2(num100 + (float)num99, (float)(Main.projectile[i].height / 2) + Main.projectile[i].gfxOffY);
 						Main.spriteBatch.Draw(texture2D6, Main.projectile[i].oldPos[num116] + new Vector2((float)Main.projectile[i].width, (float)Main.projectile[i].height) / 2f - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y7, texture2D6.Width, num113)), Color.Lerp(alpha2, color24, 0.3f), Main.projectile[i].rotation, new Vector2((float)texture2D6.Width / 2f, (float)num113 / 2f), MathHelper.Lerp(Main.projectile[i].scale, value5, (float)num116 / 15f), effects, 0f);
 					}
 					Main.spriteBatch.Draw(texture2D6, Main.projectile[i].center() - Main.screenPosition + new Vector2(0f, Main.projectile[i].gfxOffY), new Rectangle?(new Rectangle(0, y7, texture2D6.Width, num113)), Main.projectile[i].GetAlpha(color21), Main.projectile[i].rotation, new Vector2((float)texture2D6.Width / 2f, (float)num113 / 2f), Main.projectile[i].scale, effects, 0f);
@@ -28874,7 +28897,7 @@ namespace Terraria
 				Main.screenPosition.X = 0f;
 			}
 			Main.background = 0;
-			byte b = (255 + Main.tileColor.R * 2) / 3;
+			byte b = (byte)((255 + Main.tileColor.R * 2) / 3);
 			Color color = new Color((int)b, (int)b, (int)b, 255);
 			this.logoRotation += this.logoRotationSpeed * 3E-05f;
 			if ((double)this.logoRotation > 0.1)
@@ -31557,9 +31580,9 @@ namespace Terraria
 								if (num49 == 4)
 								{
 									color6 = color;
-									color6.R = (255 + color6.R) / 2;
-									color6.G = (255 + color6.R) / 2;
-									color6.B = (255 + color6.R) / 2;
+									color6.R = (byte)((255 + color6.R) / 2);
+									color6.G = (byte)((255 + color6.R) / 2);
+									color6.B = (byte)((255 + color6.R) / 2);
 								}
 								int num50 = 255;
 								int num51 = (int)color6.R - (255 - num50);
@@ -31669,9 +31692,9 @@ namespace Terraria
 									if (num60 == 4)
 									{
 										color7 = color;
-										color7.R = (255 + color7.R) / 2;
-										color7.G = (255 + color7.R) / 2;
-										color7.B = (255 + color7.R) / 2;
+										color7.R = (byte)((255 + color7.R) / 2);
+										color7.G = (byte)((255 + color7.R) / 2);
+										color7.B = (byte)((255 + color7.R) / 2);
 									}
 									int num61 = (int)color7.R - (255 - num58);
 									if (num61 < 0)
@@ -31725,9 +31748,9 @@ namespace Terraria
 								if (num68 == 4)
 								{
 									color8 = color;
-									color8.R = (255 + color8.R) / 2;
-									color8.G = (255 + color8.R) / 2;
-									color8.B = (255 + color8.R) / 2;
+									color8.R = (byte)((255 + color8.R) / 2);
+									color8.G = (byte)((255 + color8.R) / 2);
+									color8.B = (byte)((255 + color8.R) / 2);
 								}
 								int num69 = 255;
 								int num70 = (int)color8.R - (255 - num69);
@@ -31815,9 +31838,9 @@ namespace Terraria
 								break;
 							}
 							Color textColor = color;
-							textColor.R = (255 + textColor.R) / 2;
-							textColor.G = (255 + textColor.R) / 2;
-							textColor.B = (255 + textColor.R) / 2;
+							textColor.R = (byte)((255 + textColor.R) / 2);
+							textColor.G = (byte)((255 + textColor.R) / 2);
+							textColor.B = (byte)((255 + textColor.R) / 2);
 							int num78 = 255;
 							int num79 = (int)textColor.R - (255 - num78);
 							if (num79 < 0)
@@ -31895,9 +31918,9 @@ namespace Terraria
 								color9 = color;
 								break;
 							}
-							color9.R = (255 + color9.R) / 2;
-							color9.G = (255 + color9.G) / 2;
-							color9.B = (255 + color9.B) / 2;
+							color9.R = (byte)((255 + color9.R) / 2);
+							color9.G = (byte)((255 + color9.G) / 2);
+							color9.B = (byte)((255 + color9.B) / 2);
 						}
 						int num84 = (int)(255f * (this.menuItemScale[num36] * 2f - 1f));
 						if (array[num36])
@@ -31938,7 +31961,7 @@ namespace Terraria
 							}
 							else
 							{
-								color9.A -= Main.mouseTextColor / 5;
+								color9.A -= (byte)(Main.mouseTextColor / 5);
 							}
 						}
 						int num89 = 0;
@@ -32074,9 +32097,9 @@ namespace Terraria
 				if (num94 == 4)
 				{
 					color10 = color;
-					color10.R = (255 + color10.R) / 2;
-					color10.G = (255 + color10.R) / 2;
-					color10.B = (255 + color10.R) / 2;
+					color10.R = (byte)((255 + color10.R) / 2);
+					color10.G = (byte)((255 + color10.R) / 2);
+					color10.B = (byte)((255 + color10.R) / 2);
 				}
 				color10.A = (byte)((float)color10.A * 0.3f);
 				int num95 = 0;
@@ -32109,9 +32132,9 @@ namespace Terraria
 				if (num97 == 4)
 				{
 					color11 = color;
-					color11.R = (255 + color11.R) / 2;
-					color11.G = (255 + color11.R) / 2;
-					color11.B = (255 + color11.R) / 2;
+					color11.R = (byte)((255 + color11.R) / 2);
+					color11.G = (byte)((255 + color11.R) / 2);
+					color11.B = (byte)((255 + color11.R) / 2);
 				}
 				color11.A = (byte)((float)color11.A * 0.3f);
 				int num98 = 0;
@@ -32699,9 +32722,9 @@ namespace Terraria
 													}
 													break;
 												}
-												color4.R = (color3.R + color5.R) / 2;
-												color4.G = (color3.G + color5.G) / 2;
-												color4.B = (color3.B + color5.B) / 2;
+												color4.R = (byte)((color3.R + color5.R) / 2);
+												color4.G = (byte)((color3.G + color5.G) / 2);
+												color4.B = (byte)((color3.B + color5.B) / 2);
 												color4.R = (byte)((float)color4.R * num5);
 												color4.G = (byte)((float)color4.G * num6);
 												color4.B = (byte)((float)color4.B * num7);
@@ -32749,9 +32772,9 @@ namespace Terraria
 												num35 = 8;
 												break;
 											}
-											color7.R = (color3.R + color8.R) / 2;
-											color7.G = (color3.G + color8.G) / 2;
-											color7.B = (color3.B + color8.B) / 2;
+											color7.R = (byte)((color3.R + color8.R) / 2);
+											color7.G = (byte)((color3.G + color8.G) / 2);
+											color7.B = (byte)((color3.B + color8.B) / 2);
 											color7.R = (byte)((float)color7.R * num5);
 											color7.G = (byte)((float)color7.G * num6);
 											color7.B = (byte)((float)color7.B * num7);
@@ -32982,9 +33005,9 @@ namespace Terraria
 													}
 													break;
 												}
-												color14.R = (color13.R + color15.R) / 2;
-												color14.G = (color13.G + color15.G) / 2;
-												color14.B = (color13.B + color15.B) / 2;
+												color14.R = (byte)((color13.R + color15.R) / 2);
+												color14.G = (byte)((color13.G + color15.G) / 2);
+												color14.B = (byte)((color13.B + color15.B) / 2);
 												color14.R = (byte)((float)color14.R * num5);
 												color14.G = (byte)((float)color14.G * num6);
 												color14.B = (byte)((float)color14.B * num7);
@@ -33022,9 +33045,9 @@ namespace Terraria
 													num55 = 8;
 													break;
 												}
-												color17.R = (color13.R + color18.R) / 2;
-												color17.G = (color13.G + color18.G) / 2;
-												color17.B = (color13.B + color18.B) / 2;
+												color17.R = (byte)((color13.R + color18.R) / 2);
+												color17.G = (byte)((color13.G + color18.G) / 2);
+												color17.B = (byte)((color13.B + color18.B) / 2);
 												color17.R = (byte)((float)color17.R * num5);
 												color17.G = (byte)((float)color17.G * num6);
 												color17.B = (byte)((float)color17.B * num7);
@@ -33258,9 +33281,9 @@ namespace Terraria
 													}
 													break;
 												}
-												color25.R = (color24.R + color26.R) / 2;
-												color25.G = (color24.G + color26.G) / 2;
-												color25.B = (color24.B + color26.B) / 2;
+												color25.R = (byte)((color24.R + color26.R) / 2);
+												color25.G = (byte)((color24.G + color26.G) / 2);
+												color25.B = (byte)((color24.B + color26.B) / 2);
 												color25.R = (byte)((float)color25.R * num5);
 												color25.G = (byte)((float)color25.G * num6);
 												color25.B = (byte)((float)color25.B * num7);
@@ -33289,9 +33312,9 @@ namespace Terraria
 													num75 = 8;
 													break;
 												}
-												color27.R = (color24.R + color28.R) / 2;
-												color27.G = (color24.G + color28.G) / 2;
-												color27.B = (color24.B + color28.B) / 2;
+												color27.R = (byte)((color24.R + color28.R) / 2);
+												color27.G = (byte)((color24.G + color28.G) / 2);
+												color27.B = (byte)((color24.B + color28.B) / 2);
 												color27.R = (byte)((float)color27.R * num5);
 												color27.G = (byte)((float)color27.G * num6);
 												color27.B = (byte)((float)color27.B * num7);
@@ -35490,10 +35513,10 @@ namespace Terraria
 										num26 = (float)color4.B * num17;
 										num27 = (float)color4.A * num17;
 										color4 = new Color((int)((byte)num24), (int)((byte)num25), (int)((byte)num26), (int)((byte)num27));
-										color3.R = (color2.R * 3 + color4.R * 2) / 5;
-										color3.G = (color2.G * 3 + color4.G * 2) / 5;
-										color3.B = (color2.B * 3 + color4.B * 2) / 5;
-										color3.A = (color2.A * 3 + color4.A * 2) / 5;
+										color3.R = (byte)((color2.R * 3 + color4.R * 2) / 5);
+										color3.G = (byte)((color2.G * 3 + color4.G * 2) / 5);
+										color3.B = (byte)((color2.B * 3 + color4.B * 2) / 5);
+										color3.A = (byte)((color2.A * 3 + color4.A * 2) / 5);
 										Main.spriteBatch.Draw(Main.liquidTexture[num12], value - Main.screenPosition + new Vector2((float)num28, (float)num29) + zero, new Rectangle?(new Rectangle(value2.X + num28, value2.Y + num29, width, height)), color3, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
 									}
 								}
@@ -39473,9 +39496,9 @@ namespace Terraria
 				}
 			}
 			Main.tileColor.A = 255;
-			Main.tileColor.R = (Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.R * 7) / 10;
-			Main.tileColor.G = (Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.G * 7) / 10;
-			Main.tileColor.B = (Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.B * 7) / 10;
+			Main.tileColor.R = (byte)((Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.R * 7) / 10);
+			Main.tileColor.G = (byte)((Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.G * 7) / 10);
+			Main.tileColor.B = (byte)((Main.bgColor.R + Main.bgColor.G + Main.bgColor.B + Main.bgColor.B * 7) / 10);
 			float num53 = (float)(Main.maxTilesX / 4200);
 			num53 *= num53;
 			Main.atmo = (float)((double)((Main.screenPosition.Y + (float)(Main.screenHeight / 2)) / 16f - (65f + 10f * num53)) / (Main.worldSurface / 5.0));
@@ -40495,30 +40518,39 @@ namespace Terraria
 							float num71 = player.ghostFade * 5f;
 							for (int num72 = 0; num72 < 4; num72++)
 							{
-								float num73;
-								float num74;
+								float num73 = 0;
+								float num74 = 0;
+								bool found = false;
 								switch (num72)
 								{
 								case 0:
-									IL_5367:
 									num73 = num71;
 									num74 = 0f;
-									goto IL_539B;
+									found = true;
+									break;
 								case 1:
 									num73 = -num71;
 									num74 = 0f;
-									goto IL_539B;
+									found = true;
+									break;
 								case 2:
 									num73 = 0f;
 									num74 = num71;
-									goto IL_539B;
+									found = true;
+									break;
 								case 3:
 									num73 = 0f;
 									num74 = -num71;
-									goto IL_539B;
+									found = true;
+									break;
 								}
-								goto IL_5367;
-								IL_539B:
+
+								if (!found)
+								{
+									num73 = num71;
+									num74 = 0f;
+								}
+
 								position = new Vector2(player.position.X + num73, player.position.Y + player.gfxOffY + num74);
 								this.DrawPlayer(player, position, player.fullRotation, player.fullRotationOrigin, player.ghostFade);
 							}

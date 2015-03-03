@@ -7948,43 +7948,52 @@ namespace Terraria
 			int num527 = 400;
 			int num528 = 4;
 			int num529 = 275;
+			int maxValue = 0;
+			int num531 = 0;
+			int num532 = 0;
+			bool flag44 = false;
+			bool found = false;
 			for (int num530 = 0; num530 < 3; num530++)
 			{
-				int num531;
-				int num532;
+				
 				switch (num530)
 				{
-				case 0:
+					case 0:
+					{
+						num531 = 5;
+						num532 = num529;
+						flag44 = false;
+						maxValue = num528;
+						found = true;
+						break;
+					}
+					case 1:
+					{
+						num531 = num527;
+						num532 = Main.maxTilesX - num527;
+						flag44 = true;
+						maxValue = num526;
+						found = true;
+						break;
+					}
+					case 2:
+					{
+						num531 = Main.maxTilesX - num529;
+						num532 = Main.maxTilesX - 5;
+						flag44 = false;
+						maxValue = num528;
+						found = true;
+						break;
+					}
+				}
+
+				if (!found)
 				{
-					IL_E34C:
-					num531 = 5;
-					num532 = num529;
-					bool flag44 = false;
-					int maxValue = num528;
-					goto IL_E3B3;
+					maxValue = num528;
 				}
-				case 1:
-				{
-					num531 = num527;
-					num532 = Main.maxTilesX - num527;
-					bool flag44 = true;
-					int maxValue = num526;
-					goto IL_E3B3;
-				}
-				case 2:
-				{
-					num531 = Main.maxTilesX - num529;
-					num532 = Main.maxTilesX - 5;
-					bool flag44 = false;
-					int maxValue = num528;
-					goto IL_E3B3;
-				}
-				}
-				goto IL_E34C;
-				IL_E3B3:
+
 				for (int num533 = num531; num533 < num532; num533++)
 				{
-					int maxValue;
 					if (WorldGen.genRand.Next(maxValue) == 0)
 					{
 						int num534 = 0;
@@ -7996,7 +8005,6 @@ namespace Terraria
 								Tile tile2 = Main.tile[num533, num534 - 1];
 								if (!tile2.active() && tile2.wall == 0)
 								{
-									bool flag44;
 									if (flag44)
 									{
 										WorldGen.PlantCactus(num533, num534);
@@ -8917,7 +8925,7 @@ namespace Terraria
 						if (flag)
 						{
 							short num6 = (short)Math.Sign(num3);
-							num4 += num6 * 2;
+							num4 += (short)(num6 * 2);
 						}
 					}
 					tile.active(true);
@@ -11660,7 +11668,7 @@ namespace Terraria
 			Main.tile[x - 1, y - 1].frameY = 0;
 			Main.tile[x, y - 1].active(true);
 			Main.tile[x, y - 1].type = 31;
-			Main.tile[x, y - 1].frameX = 18 + num;
+			Main.tile[x, y - 1].frameX = (short)(18 + num);
 			Main.tile[x, y - 1].frameY = 0;
 			Main.tile[x - 1, y].active(true);
 			Main.tile[x - 1, y].type = 31;
@@ -11668,7 +11676,7 @@ namespace Terraria
 			Main.tile[x - 1, y].frameY = 18;
 			Main.tile[x, y].active(true);
 			Main.tile[x, y].type = 31;
-			Main.tile[x, y].frameX = 18 + num;
+			Main.tile[x, y].frameX = (short)(18 + num);
 			Main.tile[x, y].frameY = 18;
 		}
 		public static void AddHellHouses()
@@ -12140,34 +12148,40 @@ namespace Terraria
 					int num36 = WorldGen.genRand.Next(3);
 					int style16 = 32;
 					int style17 = 32;
-					int num37;
+					int num37 = 0;
+					int num38 = 0;
+					bool found = false;
 					switch (num36)
 					{
 					case 0:
 					{
-						IL_F95:
 						num37 = 1;
-						int num38 = 3;
-						goto IL_FAB;
+						num38 = 3;
+						found = true;
+						break;
 					}
 					case 1:
 					{
 						num37 = 3;
-						int num38 = 3;
-						goto IL_FAB;
+						num38 = 3;
+						found = true;
+						break;
 					}
 					case 2:
 					{
 						num37 = 1;
-						int num38 = 2;
-						goto IL_FAB;
+						num38 = 2;
+						found = true;
+						break;
 					}
 					}
-					goto IL_F95;
-					IL_FAB:
+					if (!found)
+					{
+						num37 = 1;
+						num38 = 3;
+					}
 					for (int num39 = num34 - 1; num39 <= num34 + num37; num39++)
 					{
-						int num38;
 						for (int num40 = num35; num40 <= num35 + num38; num40++)
 						{
 							Tile tile = Main.tile[num34, num35];
@@ -18213,7 +18227,7 @@ namespace Terraria
 			Main.tile[num4 + 1, num2].active(true);
 			Main.tile[num4 + 1, num2].type = 11;
 			Main.tile[num4 + 1, num2].frameY = (short)num6;
-			Main.tile[num4 + 1, num2].frameX = num3 + 18;
+			Main.tile[num4 + 1, num2].frameX = (short)(num3 + 18);
 			Main.tile[num4 + 1, num2].color(color);
 			if (Main.tile[num4, num2 + 1] == null)
 			{
@@ -18231,7 +18245,7 @@ namespace Terraria
 			Main.tile[num4 + 1, num2 + 1].active(true);
 			Main.tile[num4 + 1, num2 + 1].type = 11;
 			Main.tile[num4 + 1, num2 + 1].frameY = (short)(num6 + 18);
-			Main.tile[num4 + 1, num2 + 1].frameX = num3 + 18;
+			Main.tile[num4 + 1, num2 + 1].frameX = (short)(num3 + 18);
 			Main.tile[num4 + 1, num2 + 1].color(color2);
 			if (Main.tile[num4, num2 + 2] == null)
 			{
@@ -18249,7 +18263,7 @@ namespace Terraria
 			Main.tile[num4 + 1, num2 + 2].active(true);
 			Main.tile[num4 + 1, num2 + 2].type = 11;
 			Main.tile[num4 + 1, num2 + 2].frameY = (short)(num6 + 36);
-			Main.tile[num4 + 1, num2 + 2].frameX = num3 + 18;
+			Main.tile[num4 + 1, num2 + 2].frameX = (short)(num3 + 18);
 			Main.tile[num4 + 1, num2 + 2].color(color3);
 			for (int m = num4 - 1; m <= num4 + 2; m++)
 			{
@@ -19244,7 +19258,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -2);
+					Main.tile[num, num2].frameY = (short)((Main.tile[num, num2].frameY & -2));
 				}
 				if ((style & 2) == 2)
 				{
@@ -19253,7 +19267,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -3);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -3);
 				}
 				if ((style & 4) == 4)
 				{
@@ -19262,7 +19276,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -5);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -5);
 				}
 			}
 			if (obj == 1)
@@ -19274,7 +19288,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -9);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -9);
 				}
 				if ((style & 2) == 2)
 				{
@@ -19283,7 +19297,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -17);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -17);
 				}
 				if ((style & 4) == 4)
 				{
@@ -19292,7 +19306,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -33);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -33);
 				}
 			}
 			if (obj == 2)
@@ -19304,7 +19318,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -65);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -65);
 				}
 				if ((style & 2) == 2)
 				{
@@ -19313,7 +19327,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -129);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -129);
 				}
 				if ((style & 4) == 4)
 				{
@@ -19322,7 +19336,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -257);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -257);
 				}
 				if ((style & 8) == 8)
 				{
@@ -19331,7 +19345,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -513);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -513);
 				}
 			}
 			if (obj == 3)
@@ -19343,7 +19357,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -1025);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -1025);
 				}
 				if ((style & 2) == 2)
 				{
@@ -19352,7 +19366,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -2049);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -2049);
 				}
 				if ((style & 4) == 4)
 				{
@@ -19361,7 +19375,7 @@ namespace Terraria
 				}
 				else
 				{
-					Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -4097);
+					Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -4097);
 				}
 				if ((style & 8) == 8)
 				{
@@ -19369,7 +19383,7 @@ namespace Terraria
 					expr_443.frameY |= 8192;
 					return;
 				}
-				Main.tile[num, num2].frameY = (Main.tile[num, num2].frameY & -8193);
+				Main.tile[num, num2].frameY = (short)(Main.tile[num, num2].frameY & -8193);
 			}
 		}
 		public static void PlaceXmasTree(int x, int y, ushort type = 171)
@@ -20140,7 +20154,8 @@ namespace Terraria
 		}
 		public static void paintEffect(int x, int y, byte color, byte oldColor)
 		{
-			int color2 = (int)(color ?? oldColor);
+			// TODO This has something to do with white color or something iirc, dotPeek it up
+			int color2 = oldColor;//(int)(color ?? oldColor);
 			Color newColor = WorldGen.paintColor(color2);
 			for (int i = 0; i < 10; i++)
 			{
@@ -21592,7 +21607,7 @@ namespace Terraria
 				Main.tile[x, y - 1].frameX = frameX;
 				Main.tile[x, y - 1].type = type;
 				Main.tile[x, y].active(true);
-				Main.tile[x, y].frameY = num + 18;
+				Main.tile[x, y].frameY = (short)(num + 18);
 				Main.tile[x, y].frameX = frameX;
 				Main.tile[x, y].type = type;
 			}
@@ -21616,7 +21631,7 @@ namespace Terraria
 				Main.tile[x, y].frameX = frameX;
 				Main.tile[x, y].type = type;
 				Main.tile[x, y + 1].active(true);
-				Main.tile[x, y + 1].frameY = num + 18;
+				Main.tile[x, y + 1].frameY = (short)(num + 18);
 				Main.tile[x, y + 1].frameX = frameX;
 				Main.tile[x, y + 1].type = type;
 			}
@@ -21828,7 +21843,7 @@ namespace Terraria
 					Main.tile[i, j].type = type;
 					Main.tile[i + 1, j].active(true);
 					Main.tile[i + 1, j].frameY = frameY;
-					Main.tile[i + 1, j].frameX = num + 18;
+					Main.tile[i + 1, j].frameX = (short)(num + 18);
 					Main.tile[i + 1, j].type = type;
 					return true;
 				}
@@ -22467,15 +22482,15 @@ namespace Terraria
 					Main.tile[X2 - 1, num - 1].type = type;
 					Main.tile[X2, num - 1].active(true);
 					Main.tile[X2, num - 1].frameY = num2;
-					Main.tile[X2, num - 1].frameX = 18 + num3;
+					Main.tile[X2, num - 1].frameX = (short)(18 + num3);
 					Main.tile[X2, num - 1].type = type;
 					Main.tile[X2 - 1, num].active(true);
-					Main.tile[X2 - 1, num].frameY = num2 + 18;
+					Main.tile[X2 - 1, num].frameY = (short)(num2 + 18);
 					Main.tile[X2 - 1, num].frameX = num3;
 					Main.tile[X2 - 1, num].type = type;
 					Main.tile[X2, num].active(true);
-					Main.tile[X2, num].frameY = num2 + 18;
-					Main.tile[X2, num].frameX = 18 + num3;
+					Main.tile[X2, num].frameY = (short)(num2 + 18);
+					Main.tile[X2, num].frameX = (short)(18 + num3);
 					Main.tile[X2, num].type = type;
 					return;
 				}
@@ -22518,11 +22533,11 @@ namespace Terraria
 					Main.tile[X2 - 1, Y2 - 1].type = type;
 					Main.tile[X2, Y2 - 1].active(true);
 					Main.tile[X2, Y2 - 1].frameY = 0;
-					Main.tile[X2, Y2 - 1].frameX = num4 + 18;
+					Main.tile[X2, Y2 - 1].frameX = (short)(num4 + 18);
 					Main.tile[X2, Y2 - 1].type = type;
 					Main.tile[X2 + 1, Y2 - 1].active(true);
 					Main.tile[X2 + 1, Y2 - 1].frameY = 0;
-					Main.tile[X2 + 1, Y2 - 1].frameX = num4 + 36;
+					Main.tile[X2 + 1, Y2 - 1].frameX = (short)(num4 + 36);
 					Main.tile[X2 + 1, Y2 - 1].type = type;
 					Main.tile[X2 - 1, Y2].active(true);
 					Main.tile[X2 - 1, Y2].frameY = 18;
@@ -22530,11 +22545,11 @@ namespace Terraria
 					Main.tile[X2 - 1, Y2].type = type;
 					Main.tile[X2, Y2].active(true);
 					Main.tile[X2, Y2].frameY = 18;
-					Main.tile[X2, Y2].frameX = num4 + 18;
+					Main.tile[X2, Y2].frameX = (short)(num4 + 18);
 					Main.tile[X2, Y2].type = type;
 					Main.tile[X2 + 1, Y2].active(true);
 					Main.tile[X2 + 1, Y2].frameY = 18;
-					Main.tile[X2 + 1, Y2].frameX = num4 + 36;
+					Main.tile[X2 + 1, Y2].frameX = (short)(num4 + 36);
 					Main.tile[X2 + 1, Y2].type = type;
 				}
 			}
@@ -24182,15 +24197,15 @@ namespace Terraria
 				Main.tile[x - 1, y - 1].type = type;
 				Main.tile[x, y - 1].active(true);
 				Main.tile[x, y - 1].frameY = (short)num2;
-				Main.tile[x, y - 1].frameX = 18 + num;
+				Main.tile[x, y - 1].frameX = (short)(18 + num);
 				Main.tile[x, y - 1].type = type;
 				Main.tile[x + 1, y - 1].active(true);
 				Main.tile[x + 1, y - 1].frameY = (short)num2;
-				Main.tile[x + 1, y - 1].frameX = 36 + num;
+				Main.tile[x + 1, y - 1].frameX = (short)(36 + num);
 				Main.tile[x + 1, y - 1].type = type;
 				Main.tile[x + 2, y - 1].active(true);
 				Main.tile[x + 2, y - 1].frameY = (short)num2;
-				Main.tile[x + 2, y - 1].frameX = 54 + num;
+				Main.tile[x + 2, y - 1].frameX = (short)(54 + num);
 				Main.tile[x + 2, y - 1].type = type;
 				Main.tile[x - 1, y].active(true);
 				Main.tile[x - 1, y].frameY = (short)(num2 + 18);
@@ -24198,15 +24213,15 @@ namespace Terraria
 				Main.tile[x - 1, y].type = type;
 				Main.tile[x, y].active(true);
 				Main.tile[x, y].frameY = (short)(num2 + 18);
-				Main.tile[x, y].frameX = 18 + num;
+				Main.tile[x, y].frameX = (short)(18 + num);
 				Main.tile[x, y].type = type;
 				Main.tile[x + 1, y].active(true);
 				Main.tile[x + 1, y].frameY = (short)(num2 + 18);
-				Main.tile[x + 1, y].frameX = 36 + num;
+				Main.tile[x + 1, y].frameX = (short)(36 + num);
 				Main.tile[x + 1, y].type = type;
 				Main.tile[x + 2, y].active(true);
 				Main.tile[x + 2, y].frameY = (short)(num2 + 18);
-				Main.tile[x + 2, y].frameX = 54 + num;
+				Main.tile[x + 2, y].frameX = (short)(54 + num);
 				Main.tile[x + 2, y].type = type;
 			}
 		}
@@ -24835,11 +24850,11 @@ namespace Terraria
 				Main.tile[x - 1, y].type = type;
 				Main.tile[x, y].active(true);
 				Main.tile[x, y].frameY = 0;
-				Main.tile[x, y].frameX = num + 18;
+				Main.tile[x, y].frameX = (short)(num + 18);
 				Main.tile[x, y].type = type;
 				Main.tile[x + 1, y].active(true);
 				Main.tile[x + 1, y].frameY = 0;
-				Main.tile[x + 1, y].frameX = num + 36;
+				Main.tile[x + 1, y].frameX = (short)(num + 36);
 				Main.tile[x + 1, y].type = type;
 			}
 		}
@@ -24904,11 +24919,11 @@ namespace Terraria
 					Main.tile[x - 1, y].type = type;
 					Main.tile[x, y].active(true);
 					Main.tile[x, y].frameY = 0;
-					Main.tile[x, y].frameX = num2 + 18;
+					Main.tile[x, y].frameX = (short)(num2 + 18);
 					Main.tile[x, y].type = type;
 					Main.tile[x + 1, y].active(true);
 					Main.tile[x + 1, y].frameY = 0;
-					Main.tile[x + 1, y].frameX = num2 + 36;
+					Main.tile[x + 1, y].frameX = (short)(num2 + 36);
 					Main.tile[x + 1, y].type = type;
 					return;
 				}
@@ -24918,11 +24933,11 @@ namespace Terraria
 				Main.tile[x - 1, y - 1].type = type;
 				Main.tile[x, y - 1].active(true);
 				Main.tile[x, y - 1].frameY = 0;
-				Main.tile[x, y - 1].frameX = num2 + 18;
+				Main.tile[x, y - 1].frameX = (short)(num2 + 18);
 				Main.tile[x, y - 1].type = type;
 				Main.tile[x + 1, y - 1].active(true);
 				Main.tile[x + 1, y - 1].frameY = 0;
-				Main.tile[x + 1, y - 1].frameX = num2 + 36;
+				Main.tile[x + 1, y - 1].frameX = (short)(num2 + 36);
 				Main.tile[x + 1, y - 1].type = type;
 				Main.tile[x - 1, y].active(true);
 				Main.tile[x - 1, y].frameY = 18;
@@ -24930,11 +24945,11 @@ namespace Terraria
 				Main.tile[x - 1, y].type = type;
 				Main.tile[x, y].active(true);
 				Main.tile[x, y].frameY = 18;
-				Main.tile[x, y].frameX = num2 + 18;
+				Main.tile[x, y].frameX = (short)(num2 + 18);
 				Main.tile[x, y].type = type;
 				Main.tile[x + 1, y].active(true);
 				Main.tile[x + 1, y].frameY = 18;
-				Main.tile[x + 1, y].frameX = num2 + 36;
+				Main.tile[x + 1, y].frameX = (short)(num2 + 36);
 				Main.tile[x + 1, y].type = type;
 			}
 		}
@@ -24986,15 +25001,15 @@ namespace Terraria
 				Main.tile[x - 1, y - 1].type = type;
 				Main.tile[x, y - 1].active(true);
 				Main.tile[x, y - 1].frameY = num;
-				Main.tile[x, y - 1].frameX = num2 + 18;
+				Main.tile[x, y - 1].frameX = (short)(num2 + 18);
 				Main.tile[x, y - 1].type = type;
 				Main.tile[x - 1, y].active(true);
-				Main.tile[x - 1, y].frameY = num + 18;
+				Main.tile[x - 1, y].frameY = (short)(num + 18);
 				Main.tile[x - 1, y].frameX = num2;
 				Main.tile[x - 1, y].type = type;
 				Main.tile[x, y].active(true);
-				Main.tile[x, y].frameY = num + 18;
-				Main.tile[x, y].frameX = num2 + 18;
+				Main.tile[x, y].frameY = (short)(num + 18);
+				Main.tile[x, y].frameX = (short)(num2 + 18);
 				Main.tile[x, y].type = type;
 			}
 		}
@@ -39579,11 +39594,11 @@ namespace Terraria
 								}
 								else if ((num4 >= 0 && Main.tileSolid[num4] && !Main.tileNoAttach[num4]) || num4 == 124 || (num4 == 5 && num8 == 5 && num6 == 5))
 								{
-									tile.frameX = 22 + num2;
+									tile.frameX = (short)(22 + num2);
 								}
 								else if ((num5 >= 0 && Main.tileSolid[num5] && !Main.tileNoAttach[num5]) || num5 == 124 || (num5 == 5 && num9 == 5 && num7 == 5))
 								{
-									tile.frameX = 44 + num2;
+									tile.frameX = (short)(44 + num2);
 								}
 								else if (tile.wall > 0)
 								{
@@ -39727,21 +39742,21 @@ namespace Terraria
 								{
 									if (tile.frameY < 108 || tile.frameY > 54)
 									{
-										tile.frameY = 108 + num21;
+										tile.frameY = (short)(108 + num21);
 									}
 								}
 								else if (num20 >= 0 && Main.tileSolid[num20] && !Main.tileSolidTop[num20])
 								{
 									if (tile.frameY < 162 || tile.frameY > 198)
 									{
-										tile.frameY = 162 + num21;
+										tile.frameY = (short)(162 + num21);
 									}
 								}
 								else if (num18 >= 0 && Main.tileSolid[num18] && !Main.tileSolidTop[num18])
 								{
 									if (tile.frameY < 54 || tile.frameY > 90)
 									{
-										tile.frameY = 54 + num21;
+										tile.frameY = (short)(54 + num21);
 									}
 								}
 								else
@@ -39789,7 +39804,7 @@ namespace Terraria
 									tile.frameX = (short)(22 * (num23 - 179));
 									if (tile.frameY < 54 || tile.frameY > 90)
 									{
-										tile.frameY = 54 + num26;
+										tile.frameY = (short)(54 + num26);
 									}
 								}
 								else if (num24 >= 0 && Main.tileMoss[num24])
@@ -39797,7 +39812,7 @@ namespace Terraria
 									tile.frameX = (short)(22 * (num24 - 179));
 									if (tile.frameY < 108 || tile.frameY > 54)
 									{
-										tile.frameY = 108 + num26;
+										tile.frameY = (short)(108 + num26);
 									}
 								}
 								else if (num25 >= 0 && Main.tileMoss[num25])
@@ -39805,7 +39820,7 @@ namespace Terraria
 									tile.frameX = (short)(22 * (num25 - 179));
 									if (tile.frameY < 162 || tile.frameY > 198)
 									{
-										tile.frameY = 162 + num26;
+										tile.frameY = (short)(162 + num26);
 									}
 								}
 								else

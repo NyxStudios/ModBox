@@ -105,13 +105,15 @@ namespace Terraria
 			}
 			int num = (int)(Main.tile[X, Y].frameX / 36);
 			int num2 = num;
+			short num3 = 0;
+			int type = 0;
 			switch (num2)
 			{
 			case 2:
 			case 4:
 			{
-				short num3 = 36;
-				int type = 11;
+				num3 = 36;
+				type = 11;
 				goto IL_95;
 			}
 			case 3:
@@ -125,8 +127,8 @@ namespace Terraria
 				case 26:
 				case 27:
 				{
-					short num3 = 180;
-					int type = 11;
+					num3 = 180;
+					type = 11;
 					goto IL_95;
 				}
 				default:
@@ -136,8 +138,8 @@ namespace Terraria
 					case 38:
 					case 40:
 					{
-						short num3 = 36;
-						int type = 11;
+						num3 = 36;
+						type = 11;
 						goto IL_95;
 					}
 					case 37:
@@ -158,11 +160,9 @@ namespace Terraria
 				for (int j = Y; j <= Y + 1; j++)
 				{
 					Tile expr_BB = Main.tile[i, j];
-					short num3;
 					expr_BB.frameX -= num3;
 					for (int k = 0; k < 4; k++)
 					{
-						int type;
 						Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, type, 0f, 0f, 0, default(Color), 1f);
 					}
 				}

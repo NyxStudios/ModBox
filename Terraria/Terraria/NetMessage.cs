@@ -1427,7 +1427,7 @@ namespace Terraria
 								}
 								else
 								{
-									tile.slope(b4 - 1);
+									tile.slope((byte)(b4 - 1));
 								}
 							}
 						}

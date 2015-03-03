@@ -94,13 +94,14 @@ namespace Terraria
 			}
 			hitTileObject.damage += damageAmount;
 			hitTileObject.timeToLive = 60;
+			bool found = false;
 			if (tileId != this.bufferLocation)
 			{
 				for (int i = 0; i <= 10; i++)
 				{
 					if (this.order[i] == tileId)
 					{
-						IL_E1:
+						found = true;
 						while (i > 1)
 						{
 							int num = this.order[i - 1];
@@ -109,19 +110,32 @@ namespace Terraria
 							i--;
 						}
 						this.order[1] = tileId;
-						goto IL_EE;
 					}
 				}
-				goto IL_E1;
+				if (!found)
+				{
+					int i = 11;
+					while (i > 1)
+					{
+						int num = this.order[i - 1];
+						this.order[i - 1] = this.order[i];
+						this.order[i] = num;
+						i--;
+					}
+					this.order[1] = tileId;
+				}
 			}
-			this.bufferLocation = this.order[10];
-			this.data[this.bufferLocation].Clear();
-			for (int i = 10; i > 0; i--)
+			else
 			{
-				this.order[i] = this.order[i - 1];
+				this.bufferLocation = this.order[10];
+				this.data[this.bufferLocation].Clear();
+				for (int i = 10; i > 0; i--)
+				{
+					this.order[i] = this.order[i - 1];
+				}
+				this.order[0] = this.bufferLocation;
 			}
-			this.order[0] = this.bufferLocation;
-			IL_EE:
+
 			return hitTileObject.damage;
 		}
 		public void Clear(int tileId)
@@ -131,11 +145,11 @@ namespace Terraria
 				return;
 			}
 			this.data[tileId].Clear();
-			for (int i = 0; i < 10; i++)
+			int i;
+			for (i = 0; i < 10; i++)
 			{
 				if (this.order[i] == tileId)
 				{
-					IL_47:
 					while (i < 10)
 					{
 						this.order[i] = this.order[i + 1];
@@ -145,7 +159,13 @@ namespace Terraria
 					return;
 				}
 			}
-			goto IL_47;
+
+			while (i < 10)
+			{
+				this.order[i] = this.order[i + 1];
+				i++;
+			}
+			this.order[10] = tileId;
 		}
 		public void Prune()
 		{

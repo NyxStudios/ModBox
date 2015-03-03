@@ -10962,7 +10962,8 @@ namespace Terraria
 					try
 					{
 						Vector2 value3 = Collision.TileCollision(this.position, this.velocity, this.width, this.height, false, false, 1);
-						this.velocity != value3;
+						// TODO dotPeek
+						//this.velocity != value3;
 						int num211 = (int)(this.position.X / 16f) - 1;
 						int num212 = (int)((this.position.X + (float)this.width) / 16f) + 2;
 						int num213 = (int)(this.position.Y / 16f) - 1;
@@ -19981,21 +19982,16 @@ namespace Terraria
 								num802 = (int)(this.position.X + (float)this.width) / 16;
 							}
 							int num803 = (int)(this.position.Y + (float)this.height) / 16 + 1;
-							if (WorldGen.SolidTile(num802, num803) || Main.tile[num802, num803].halfBrick())
+							if (!WorldGen.SolidTile(num802, num803) && !Main.tile[num802, num803].halfBrick())
 							{
-								goto IL_244DC;
+								if (Main.tile[num802, num803].slope() <= 0)
+								{
+									num801++;
+									continue;
+								}
 							}
-							if (Main.tile[num802, num803].slope() > 0)
-							{
-								goto Block_2806;
-							}
-							IL_245FA:
-							num801++;
-							continue;
-							Block_2806:
 							try
 							{
-								IL_244DC:
 								num802 = (int)(this.position.X + (float)(this.width / 2)) / 16;
 								num803 = (int)(this.position.Y + (float)(this.height / 2)) / 16;
 								num802 += num796;
@@ -20025,7 +20021,9 @@ namespace Terraria
 							{
 								this.velocity.Y = -9.1f;
 							}
-							goto IL_245FA;
+
+							num801++;
+							continue;
 						}
 					}
 					if (this.velocity.X > num794)
@@ -20573,7 +20571,8 @@ namespace Terraria
 				for (int i = 0; i < 20; i++)
 				{
 					int num = 10;
-					((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
+					// TODO dotPeek
+					//((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
 					int num2 = Dust.NewDust(this.center() - Vector2.One * (float)num, num * 2, num * 2, 212, 0f, 0f, 0, default(Color), 1f);
 					Dust dust = Main.dust[num2];
 					Vector2 value = Vector2.Normalize(dust.position - this.center());
@@ -20599,7 +20598,8 @@ namespace Terraria
 				for (int j = 0; j < 10; j++)
 				{
 					int num3 = (int)(10f * this.ai[1]);
-					((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
+					// TODO dotPeek
+					//((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
 					int num4 = Dust.NewDust(this.center() - Vector2.One * (float)num3, num3 * 2, num3 * 2, 212, 0f, 0f, 0, default(Color), 1f);
 					Dust dust2 = Main.dust[num4];
 					Vector2 value2 = Vector2.Normalize(dust2.position - this.center());

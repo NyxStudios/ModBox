@@ -589,7 +589,7 @@ namespace Terraria
 				if (bitsByte5[0])
 				{
 					player5.pulley = true;
-					player5.pulleyDir = (bitsByte5[1] ? 2 : 1);
+					player5.pulleyDir = (byte)(bitsByte5[1] ? 2 : 1);
 				}
 				else
 				{
@@ -814,11 +814,11 @@ namespace Terraria
 						bitsByte6 = this.reader.ReadByte();
 						bitsByte7 = this.reader.ReadByte();
 						tile.active(bitsByte6[0]);
-						tile.wall = (bitsByte6[2] ? 1 : 0);
+						tile.wall = (byte)(bitsByte6[2] ? 1 : 0);
 						bool flag6 = bitsByte6[3];
 						if (Main.netMode != 2)
 						{
-							tile.liquid = (flag6 ? 1 : 0);
+							tile.liquid = (byte)(flag6 ? 1 : 0);
 						}
 						tile.wire(bitsByte6[4]);
 						tile.halfBrick(bitsByte6[5]);

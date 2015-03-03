@@ -37021,7 +37021,8 @@ namespace Terraria
 					for (int j = 0; j < 60; j++)
 					{
 						int num3 = 25;
-						((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
+						// TODO Inveistage in dotPEek i dont even want to typ ethis anymore >_<
+						//((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (float)Main.rand.Next(24, 41) / 8f;
 						int num4 = Dust.NewDust(this.center() - Vector2.One * (float)num3, num3 * 2, num3 * 2, 212, 0f, 0f, 0, default(Color), 1f);
 						Dust dust = Main.dust[num4];
 						Vector2 vector = Vector2.Normalize(dust.position - this.center());

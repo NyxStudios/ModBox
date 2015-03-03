@@ -6403,7 +6403,8 @@ namespace Terraria
 						{
 							list8.Add(tuple8);
 						}
-						Main.tile[tuple8.Item1, tuple8.Item2];
+						// TODO Inveistage in dotPEek i dont even want to typ ethis anymore >_<
+						//Main.tile[tuple8.Item1, tuple8.Item2];
 						if (Collision.HitWallSubstep(tuple8.Item1, tuple8.Item2))
 						{
 							list8.Add(tuple8);
@@ -23908,27 +23909,27 @@ namespace Terraria
 				}
 				if (this.hairDyeColor.R > color10.R)
 				{
-					this.hairDyeColor.R = this.hairDyeColor.R - 1;
+					this.hairDyeColor.R = (byte)(this.hairDyeColor.R - 1);
 				}
 				if (this.hairDyeColor.R < color10.R)
 				{
-					this.hairDyeColor.R = this.hairDyeColor.R + 1;
+					this.hairDyeColor.R = (byte)(this.hairDyeColor.R + 1);
 				}
 				if (this.hairDyeColor.G > color10.G)
 				{
-					this.hairDyeColor.G = this.hairDyeColor.G - 1;
+					this.hairDyeColor.G = (byte)(this.hairDyeColor.G - 1);
 				}
 				if (this.hairDyeColor.G < color10.G)
 				{
-					this.hairDyeColor.G = this.hairDyeColor.G + 1;
+					this.hairDyeColor.G = (byte)(this.hairDyeColor.G + 1);
 				}
 				if (this.hairDyeColor.B > color10.B)
 				{
-					this.hairDyeColor.B = this.hairDyeColor.B - 1;
+					this.hairDyeColor.B = (byte)(this.hairDyeColor.B - 1);
 				}
 				if (this.hairDyeColor.B < color10.B)
 				{
-					this.hairDyeColor.B = this.hairDyeColor.B + 1;
+					this.hairDyeColor.B = (byte)(this.hairDyeColor.B + 1);
 				}
 				color = this.hairDyeColor;
 			}

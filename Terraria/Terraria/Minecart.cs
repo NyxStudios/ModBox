@@ -518,7 +518,8 @@ namespace Terraria
 			float num = value2.Length();
 			value2.Normalize();
 			Vector2 value3 = vector2;
-			Position + Velocity;
+			// TODO Investigate in dotPEek
+			//Position + Velocity;
 			Tile tile = null;
 			bool flag = false;
 			bool flag2 = true;
@@ -1429,25 +1430,34 @@ namespace Terraria
 				int num8 = 0;
 				for (int k = 0; k < 4; k++)
 				{
-					int num9;
+					int num9 = 0;
+					bool found = false;
 					switch (k)
 					{
 					case 0:
 						IL_8A:
 						num9 = num;
-						goto IL_9C;
+						found = true;
+						break;
 					case 1:
 						num9 = num2;
-						goto IL_9C;
+						found = true;
+						break;
 					case 2:
 						num9 = num3;
-						goto IL_9C;
+						found = true;
+						break;
 					case 3:
 						num9 = num4;
-						goto IL_9C;
+						found = true;
+						break;
 					}
-					goto IL_8A;
-					IL_9C:
+
+					if (!found)
+					{
+						num9 = num;
+					}
+
 					int num10;
 					switch (num9)
 					{
@@ -1482,24 +1492,33 @@ namespace Terraria
 					{
 						num11 = (int)tile.color();
 					}
+
+					found = false;
 					switch (k)
 					{
 					case 0:
 						IL_139:
 						num5 = num11;
-						goto IL_14F;
+						found = true;
+						break;
 					case 1:
 						num6 = num11;
-						goto IL_14F;
+						found = true;
+						break;
 					case 2:
 						num7 = num11;
-						goto IL_14F;
+						found = true;
+						break;
 					case 3:
 						num8 = num11;
-						goto IL_14F;
+						found = true;
+						break;
 					}
-					goto IL_139;
-					IL_14F:;
+
+					if (!found)
+					{
+						num5 = num11;
+					}
 				}
 				if (num == num3)
 				{

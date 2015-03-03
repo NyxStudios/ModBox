@@ -46,17 +46,15 @@ namespace Terraria
 			{
 				num4 = 1;
 			}
-			if (num4 < Main.maxTilesY)
+			if (num4 >= Main.maxTilesY)
 			{
-				goto IL_AA;
+				num4 = Main.maxTilesY - 1;
 			}
-			num4 = Main.maxTilesY - 1;
 			bool result;
 			try
 			{
 				while (true)
 				{
-					IL_AA:
 					int num5 = Math.Abs(num - num3);
 					int num6 = Math.Abs(num2 - num4);
 					if (num == num3 && num2 == num4)
@@ -704,7 +702,6 @@ namespace Terraria
 						num9 %= 1f;
 						for (int i = 0; i < num16; i++)
 						{
-							Main.tile[num, num2];
 							if (Collision.HitWallSubstep(num, num2))
 							{
 								goto Block_18;
@@ -733,7 +730,6 @@ namespace Terraria
 						num10 %= 1f;
 						for (int j = 0; j < num17; j++)
 						{
-							Main.tile[num, num2];
 							if (Collision.HitWallSubstep(num, num2))
 							{
 								goto Block_26;
@@ -759,7 +755,6 @@ namespace Terraria
 					{
 						goto Block_33;
 					}
-					Main.tile[num, num2];
 					if (Collision.HitWallSubstep(num, num2))
 					{
 						goto Block_34;

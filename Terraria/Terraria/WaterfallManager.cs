@@ -235,12 +235,13 @@ namespace Terraria
 				int num18 = 0;
 				int num19 = 0;
 				int num20 = 0;
+				int num21 = 0;
 				int num22;
 				if (num12 == 1 || num12 == 14)
 				{
 					if (!Main.drewLava && this.waterfalls[i].stopAtStep != 0)
 					{
-						int num21 = 32 * this.slowFrame;
+						num21 = 32 * this.slowFrame;
 						goto IL_3FA;
 					}
 				}
@@ -256,7 +257,7 @@ namespace Terraria
 						{
 							goto IL_1879;
 						}
-						int num21 = 32 * this.regularFrame;
+						num21 = 32 * this.regularFrame;
 						goto IL_3FA;
 					}
 					if (!Main.drewLava)
@@ -683,7 +684,6 @@ namespace Terraria
 								Main.dust[num55].velocity *= 0f;
 							}
 						}
-						int num21;
 						if (num15 == 0 && num36 != 0 && num16 == 1 && num17 != num18)
 						{
 							num36 = 0;

@@ -120,7 +120,7 @@ namespace Terraria
 		{
 			get
 			{
-				return this.misc & 31;
+				return (byte)(this.misc & 31);
 			}
 			set
 			{
@@ -128,7 +128,7 @@ namespace Terraria
 				{
 					value = 30;
 				}
-				this.misc = ((this.misc & 224) | value);
+				this.misc = (byte)(((this.misc & 224) | value));
 			}
 		}
 		public Map()
@@ -196,9 +196,9 @@ namespace Terraria
 				oldColor.B = (byte)((float)(255 - oldColor.B) * 0.5f);
 				return;
 			}
-			oldColor.R = 255 - oldColor.R;
-			oldColor.G = 255 - oldColor.G;
-			oldColor.B = 255 - oldColor.B;
+			oldColor.R = (byte)(255 - oldColor.R);
+			oldColor.G = (byte)(255 - oldColor.G);
+			oldColor.B = (byte)(255 - oldColor.B);
 		}
 		public void getColor(out Color retColor, int j)
 		{
@@ -2289,13 +2289,13 @@ namespace Terraria
 						case 3:
 						case 4:
 						case 5:
-							num27 += num21 + (ushort)(b5 - 3);
+							num27 += (ushort)(num21 + (ushort)(b5 - 3));
 							break;
 						case 6:
 							if ((double)l < Main.worldSurface)
 							{
 								ushort num28 = (ushort)((double)num7 * ((double)l / Main.worldSurface));
-								num27 += num22 + num28;
+								num27 += (ushort)(num22 + num28);
 							}
 							else
 							{

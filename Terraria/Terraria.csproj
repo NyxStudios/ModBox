@@ -24,6 +24,12 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="System.Windows.Forms" />
@@ -79,6 +85,8 @@
     <Compile Include="Terraria\Sign.cs" />
     <Compile Include="Terraria\Star.cs" />
     <Compile Include="Terraria\Steam.cs" />
+    <Compile Include="Terraria\StreamExt.cs" />
+    <Compile Include="Terraria\StreamGenericExt.cs" />
     <Compile Include="Terraria\Tile.cs" />
     <Compile Include="Terraria\TimeLogger.cs" />
     <Compile Include="Terraria\Utils.cs" />
