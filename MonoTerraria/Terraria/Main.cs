@@ -5781,6 +5781,7 @@ namespace Terraria
 		}
 		protected void UpdateMusic()
 		{
+			return;
 			if (Main.musicVolume == 0f)
 			{
 				Main.curMusic = 0;
@@ -42193,6 +42194,7 @@ namespace Terraria
 		}
 		public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
 		{
+			return;
 			int num = Style;
 			try
 			{
