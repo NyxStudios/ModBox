@@ -41,6 +41,7 @@
     <StartupObject>Terraria.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Api\GetDataHandlers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Terraria.DataStructures\DoubleStack.cs" />
     <Compile Include="Terraria.DataStructures\DrawData.cs" />

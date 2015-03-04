@@ -898,7 +898,7 @@ namespace Terraria
 		public static Dust[] dust = new Dust[6001];
 		public static Star[] star = new Star[130];
 		public static Item[] item = new Item[401];
-		public static NPC[] npc = new NPC[201];
+		public static NPC[] npc = new NPC[NPC.MaxNPCs];
 		public static Gore[] gore = new Gore[501];
 		public static Rain[] rain = new Rain[Main.maxRain + 1];
 		public static Projectile[] projectile = new Projectile[1001];
@@ -4925,7 +4925,7 @@ namespace Terraria
 			{
 				Main.item[num7] = new Item();
 			}
-			for (int num8 = 0; num8 < 201; num8++)
+			for (int num8 = 0; num8 < NPC.MaxNPCs; num8++)
 			{
 				Main.npc[num8] = new NPC();
 				Main.npc[num8].whoAmI = num8;

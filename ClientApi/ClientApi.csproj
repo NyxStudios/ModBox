@@ -43,11 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Hooks\DataHooks.cs" />
     <Compile Include="Networking\IPacket.cs" />
     <Compile Include="Networking\PacketFactory.cs" />
     <Compile Include="Networking\PacketId.cs" />
     <Compile Include="Networking\PacketIdAttribute.cs" />
     <Compile Include="Networking\Packets\ClientVersion.cs" />
+    <Compile Include="Networking\Packets\NpcLimit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\StreamExt.cs" />
   </ItemGroup>

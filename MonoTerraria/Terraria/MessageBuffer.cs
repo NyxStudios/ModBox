@@ -2,7 +2,9 @@ using Microsoft.Xna.Framework;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using ClientApi.Hooks;
 using ClientApi.Networking;
+using ClientApi.Utils;
 
 namespace Terraria
 {
@@ -67,6 +69,12 @@ namespace Terraria
 			}
 			int num = start + 1;
 			byte b = this.readBuffer[start];
+			byte[] buff = new byte[length];
+			Buffer.BlockCopy(this.readBuffer, num, buff, 0, length - 1);
+			if(ClientApi.Hooks.DataHooks.OnGetData(new GetDataEventArgs(b, buff)))
+			{
+				return;
+			}
 			Main.rxMsg++;
 			Main.rxData += length;
 			Main.rxMsgType[(int)b]++;
