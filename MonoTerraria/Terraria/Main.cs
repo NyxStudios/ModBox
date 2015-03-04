@@ -8543,6 +8543,8 @@ namespace Terraria
 		}
 		protected override void Update(GameTime gameTime)
 		{
+			graphics.ApplyChanges();
+
 			Main.ignoreErrors = true;
 			Main.gameInactive = !base.IsActive;
 			if (Main.netMode == 2)
