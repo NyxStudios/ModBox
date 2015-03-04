@@ -5,6 +5,8 @@
 
 ## NyxStudios Contributor License Agreement
 
+To get started, <a href="https://www.clahub.com/agreements/NyxStudios/ModBox">sign the Contributor License Agreement</a>.
+
 Nyx Studios, LLC. routinely distributes compiled binaries of reverse engineered code whose copyright belongs to Re-Logic. This may include the Terraria server and client, both of which are distributed without warranty or any claim to merchantability or fitness. The code is, in effect, useless without the Terraria content for the sake of piracy. All code modifications are for the benefit of end-users and educational purposes only; Nyx Studios aims to make no profit on the release or distribution of modified, copyrighted binaries.
 
 ### Coverage
