@@ -73,8 +73,6 @@ namespace Terraria
 		public static bool ServerSideCharacter = false;
 		public static string clientUUID;
 		public static int maxMsg = 78;
-		public static Effect pixelShader;
-		public static Effect tileShader;
 		public static int npcStreamSpeed = 60;
 		public static int musicError = 0;
 		public static bool dedServFPS = false;
@@ -800,7 +798,6 @@ namespace Terraria
 		public static SoundEffectInstance soundInstanceDrown;
 		public static AudioEngine engine;
 		public static SoundBank soundBank;
-		public static WaveBank waveBank;
 		public static Cue[] music = new Cue[34];
 		public static float[] musicFade = new float[34];
 		public static float musicVolume = 0.75f;
@@ -5135,15 +5132,10 @@ namespace Terraria
 			try
 			{
 				this.mapSectionTexture = new RenderTarget2D(base.GraphicsDevice, 200, 150);
-				Main.pixelShader = base.Content.Load<Effect>("PixelShader");
-				Main.tileShader = base.Content.Load<Effect>("TileShader");
+				//Main.pixelShader = base.Content.Load<Effect>("PixelShader");
+				//Main.tileShader = base.Content.Load<Effect>("TileShader");
 				Main.engine = new AudioEngine("Content" + Path.DirectorySeparatorChar + "TerrariaMusic.xgs");
 				Main.soundBank = new SoundBank(Main.engine, "Content" + Path.DirectorySeparatorChar + "Sound Bank.xsb");
-				Main.waveBank = new WaveBank(Main.engine, "Content" + Path.DirectorySeparatorChar + "Wave Bank.xwb");
-				for (int i = 1; i < 34; i++)
-				{
-					Main.music[i] = Main.soundBank.GetCue("Music_" + i);
-				}
 				Main.soundMech[0] = base.Content.Load<SoundEffect>("Sounds" + Path.DirectorySeparatorChar + "Mech_0");
 				Main.soundInstanceMech[0] = Main.soundMech[0].CreateInstance();
 				Main.soundGrab = base.Content.Load<SoundEffect>("Sounds" + Path.DirectorySeparatorChar + "Grab");
@@ -36617,16 +36609,13 @@ namespace Terraria
 				if (c >= 28)
 				{
 					int index = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index].Apply();
 				}
 				else if (c > 0 && c < 13 && (t == 0 || t == 2 || t == 5 || t == 23 || t == 59 || t == 60 || t == 70 || t == 109 || t == 199))
 				{
 					int index2 = c + 27;
-					Main.tileShader.CurrentTechnique.Passes[index2].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.tileTexture[t], new Rectangle(0, 0, Main.tileTexture[t].Width, Main.tileTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -36654,16 +36643,13 @@ namespace Terraria
 				if (c >= 28)
 				{
 					int index = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index].Apply();
 				}
 				else if (c > 0 && c < 13)
 				{
 					int index2 = c + 27;
-					Main.tileShader.CurrentTechnique.Passes[index2].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.treeTopTexture[t], new Rectangle(0, 0, Main.treeTopTexture[t].Width, Main.treeTopTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -36674,16 +36660,13 @@ namespace Terraria
 				if (c >= 28)
 				{
 					int index3 = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index3].Apply();
 				}
 				else if (c > 0 && c < 13)
 				{
 					int index4 = c + 27;
-					Main.tileShader.CurrentTechnique.Passes[index4].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.treeBranchTexture[t], new Rectangle(0, 0, Main.treeBranchTexture[t].Width, Main.treeBranchTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -36710,16 +36693,13 @@ namespace Terraria
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 				if (c == 30)
 				{
-					Main.tileShader.CurrentTechnique.Passes[43].Apply();
 				}
 				else if (c >= 28)
 				{
 					int index = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.wallTexture[t], new Rectangle(0, 0, Main.wallTexture[t].Width, Main.wallTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -42173,7 +42153,6 @@ namespace Terraria
 		}
 		public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
 		{
-			return;
 			int num = Style;
 			try
 			{
