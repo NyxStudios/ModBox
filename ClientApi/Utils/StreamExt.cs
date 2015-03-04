@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using ClientApi.Utils;
 
-namespace System.IO
+namespace ClientApi.Utils
 {
     /// <summary>
     /// BinaryReader/BinaryWriter as extension methods

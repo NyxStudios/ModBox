@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using ClientApi.Networking;
+using ClientApi.Utils;
 
 namespace Terraria
 {
@@ -23,7 +24,10 @@ namespace Terraria
 				{
 					stream.WriteInt8((byte)PacketFactory.Instance.GetPacketId(packet)); //write the custom packet id
 					packet.Write(stream); //push the packet into a stream
-					binaryWriter.Write(stream.GetBuffer()); //write the packet to the binary writer
+					int writtenBytes = (int)stream.Position;
+					stream.Position = 0;
+					byte[] buffer = stream.ReadBytes(writtenBytes);
+					binaryWriter.Write(buffer);
 				}
 				long end = binaryWriter.BaseStream.Position; //get the end position
 				long length = end - position; //get the length
@@ -62,7 +66,7 @@ namespace Terraria
 				MemoryStream output = new MemoryStream(NetMessage.buffer[num].writeBuffer);
 				BinaryWriter binaryWriter = new BinaryWriter(output);
 				long position = binaryWriter.BaseStream.Position;
-				
+				binaryWriter.BaseStream.Position += 2L;
 				binaryWriter.Write((byte)msgType);
 				switch (msgType)
 				{

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ClientApi.Utils;
 
 namespace ClientApi.Networking.Packets
 {
 	[PacketId(PacketId.ClientVersion)]
-	class ClientVersion : IPacket
+	public class ClientVersion : IPacket
 	{
 		public string Version;
 

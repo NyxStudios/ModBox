@@ -4,3 +4,7 @@
 /Terraria/Terraria/Steam.cs
 /MonoTerraria/bin
 /MonoTerraria/obj
+/ClientApi/bin
+/ClientApi/obj
+/ServerPlugin/bin
+/ServerPlugin/obj
