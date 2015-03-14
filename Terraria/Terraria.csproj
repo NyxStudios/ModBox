@@ -85,8 +85,6 @@
     <Compile Include="Terraria\Sign.cs" />
     <Compile Include="Terraria\Star.cs" />
     <Compile Include="Terraria\Steam.cs" />
-    <Compile Include="Terraria\StreamExt.cs" />
-    <Compile Include="Terraria\StreamGenericExt.cs" />
     <Compile Include="Terraria\Tile.cs" />
     <Compile Include="Terraria\TimeLogger.cs" />
     <Compile Include="Terraria\Utils.cs" />
