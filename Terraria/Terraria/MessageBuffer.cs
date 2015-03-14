@@ -1,6 +1,11 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.IO;
+using System.Windows.Forms;
+using ClientApi.Hooks;
+using ClientApi.Networking;
+using ClientApi.Utils;
+
 namespace Terraria
 {
 	public class MessageBuffer
@@ -64,6 +69,12 @@ namespace Terraria
 			}
 			int num = start + 1;
 			byte b = this.readBuffer[start];
+			byte[] buff = new byte[length];
+			Buffer.BlockCopy(this.readBuffer, num, buff, 0, length - 1);
+			if(ClientApi.Hooks.DataHooks.OnGetData(new GetDataEventArgs(b, buff)))
+			{
+				return;
+			}
 			Main.rxMsg++;
 			Main.rxData += length;
 			Main.rxMsgType[(int)b]++;
@@ -629,7 +640,6 @@ namespace Terraria
 				return;
 			}
 			case 15:
-			case 67:
 				return;
 			case 16:
 			{
@@ -2195,6 +2205,13 @@ namespace Terraria
 				}
 				return;
 			}
+			case 67:
+				byte packetId = this.reader.ReadByte();
+				byte[] buffer = this.reader.BaseStream.ReadBytes(length - 4);
+				
+				IPacket packet = PacketFactory.Instance.CreatePacket((PacketId)packetId, buffer);
+				Console.WriteLine("Received custom packet {0}", (PacketId)packetId);
+				return;
 			case 68:
 				this.reader.ReadString();
 				return;

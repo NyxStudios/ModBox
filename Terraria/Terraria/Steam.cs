@@ -11,11 +11,11 @@ namespace Terraria
 		private static extern bool SteamAPI_Shutdown();
 		public static void Init()
 		{
-			Steam.SteamInit = Steam.SteamAPI_Init();
+			//Steam.SteamInit = Steam.SteamAPI_Init();
 		}
 		public static void Kill()
 		{
-			Steam.SteamAPI_Shutdown();
+			//Steam.SteamAPI_Shutdown();
 		}
 	}
 }

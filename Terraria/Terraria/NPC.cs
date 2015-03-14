@@ -4,6 +4,7 @@ namespace Terraria
 {
 	public class NPC
 	{
+		public static int MaxNPCs = 501;
 		public const int maxBuffs = 5;
 		public float teleportTime;
 		public static int immuneTime = 20;
@@ -1184,7 +1185,7 @@ namespace Terraria
 		public static void setNPCName(string newName, int npcType, bool resetExtras = false)
 		{
 			bool flag = false;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == npcType)
 				{
@@ -1206,7 +1207,7 @@ namespace Terraria
 		}
 		public static string firstNPCName(int npcType)
 		{
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == npcType)
 				{
@@ -2410,7 +2411,7 @@ namespace Terraria
 			int num = 0;
 			int num2 = 0;
 			int num3 = 0;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == type)
 				{
@@ -12351,7 +12352,7 @@ namespace Terraria
 						if (this.life == 0)
 						{
 							bool flag17 = true;
-							for (int num181 = 0; num181 < 200; num181++)
+							for (int num181 = 0; num181 < NPC.MaxNPCs; num181++)
 							{
 								if (Main.npc[num181].active && (Main.npc[num181].type == 13 || Main.npc[num181].type == 14 || Main.npc[num181].type == 15))
 								{
@@ -17929,7 +17930,7 @@ namespace Terraria
 							}
 							if (Main.netMode != 1 && !Main.dayTime && !dead2 && this.timeLeft < 10)
 							{
-								for (int num478 = 0; num478 < 200; num478++)
+								for (int num478 = 0; num478 < NPC.MaxNPCs; num478++)
 								{
 									if (num478 != this.whoAmI && Main.npc[num478].active && (Main.npc[num478].type == 125 || Main.npc[num478].type == 126) && Main.npc[num478].timeLeft - 1 > this.timeLeft)
 									{
@@ -18416,7 +18417,7 @@ namespace Terraria
 							}
 							if (Main.netMode != 1 && !Main.dayTime && !dead3 && this.timeLeft < 10)
 							{
-								for (int num517 = 0; num517 < 200; num517++)
+								for (int num517 = 0; num517 < NPC.MaxNPCs; num517++)
 								{
 									if (num517 != this.whoAmI && Main.npc[num517].active && (Main.npc[num517].type == 125 || Main.npc[num517].type == 126) && Main.npc[num517].timeLeft - 1 > this.timeLeft)
 									{
@@ -20220,7 +20221,7 @@ namespace Terraria
 								}
 								if ((double)this.position.Y > Main.rockLayer * 16.0)
 								{
-									for (int num626 = 0; num626 < 200; num626++)
+									for (int num626 = 0; num626 < NPC.MaxNPCs; num626++)
 									{
 										if (Main.npc[num626].aiStyle == this.aiStyle)
 										{
@@ -21866,7 +21867,7 @@ namespace Terraria
 							bool flag54 = false;
 							bool flag55 = false;
 							this.dontTakeDamage = false;
-							for (int num722 = 0; num722 < 200; num722++)
+							for (int num722 = 0; num722 < NPC.MaxNPCs; num722++)
 							{
 								if (Main.npc[num722].active && Main.npc[num722].type == 246)
 								{
@@ -22856,7 +22857,7 @@ namespace Terraria
 								float num807 = 0f;
 								float num808 = 0f;
 								int num809 = 0;
-								for (int num810 = 0; num810 < 200; num810++)
+								for (int num810 = 0; num810 < NPC.MaxNPCs; num810++)
 								{
 									if (Main.npc[num810].active && Main.npc[num810].aiStyle == 52)
 									{
@@ -23155,7 +23156,7 @@ namespace Terraria
 									}
 									if (!flag61 && this.localAI[0] <= 0f && this.ai[0] != 0f)
 									{
-										for (int num833 = 0; num833 < 200; num833++)
+										for (int num833 = 0; num833 < NPC.MaxNPCs; num833++)
 										{
 											if (num833 != this.whoAmI && Main.npc[num833].active && Main.npc[num833].type == this.type && (Main.npc[num833].velocity.X != 0f || Main.npc[num833].velocity.Y != 0f))
 											{
@@ -23521,7 +23522,7 @@ namespace Terraria
 										if (Main.netMode != 1)
 										{
 											int num875 = 0;
-											for (int num876 = 0; num876 < 200; num876++)
+											for (int num876 = 0; num876 < NPC.MaxNPCs; num876++)
 											{
 												if (Main.npc[num876].active && Main.npc[num876].type == 267)
 												{
@@ -30724,7 +30725,7 @@ namespace Terraria
 			}
 			int num2 = 0;
 			int num3 = 0;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active)
 				{
@@ -34031,7 +34032,7 @@ namespace Terraria
 			}
 			else
 			{
-				for (int j = Start; j < 200; j++)
+				for (int j = Start; j < NPC.MaxNPCs; j++)
 				{
 					if (!Main.npc[j].active)
 					{
@@ -34311,7 +34312,7 @@ namespace Terraria
 				}
 				if ((this.type == 113 || this.type == 114) && this.life <= 0)
 				{
-					for (int i = 0; i < 200; i++)
+					for (int i = 0; i < NPC.MaxNPCs; i++)
 					{
 						if (Main.npc[i].active && (Main.npc[i].type == 113 || Main.npc[i].type == 114))
 						{
@@ -34407,7 +34408,7 @@ namespace Terraria
 					Vector2 vector2 = Main.player[this.target].center();
 					float num = 1E+08f;
 					Vector2 vector3 = this.position;
-					for (int j = 0; j < 200; j++)
+					for (int j = 0; j < NPC.MaxNPCs; j++)
 					{
 						if (Main.npc[j].active && (Main.npc[j].type == 134 || Main.npc[j].type == 135 || Main.npc[j].type == 136))
 						{
@@ -41436,7 +41437,7 @@ namespace Terraria
 		public static int CountNPCS(int Type)
 		{
 			int num = 0;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == Type)
 				{
@@ -41447,7 +41448,7 @@ namespace Terraria
 		}
 		public static bool AnyNPCs(int Type)
 		{
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == Type)
 				{
@@ -41463,7 +41464,7 @@ namespace Terraria
 			Vector2 zero = Vector2.Zero;
 			int num = 0;
 			int num2 = 0;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == 35)
 				{
@@ -41471,7 +41472,7 @@ namespace Terraria
 					break;
 				}
 			}
-			for (int j = 0; j < 200; j++)
+			for (int j = 0; j < NPC.MaxNPCs; j++)
 			{
 				if (Main.npc[j].active)
 				{
@@ -41515,7 +41516,7 @@ namespace Terraria
 		public static bool NearSpikeBall(int x, int y)
 		{
 			Rectangle rectangle = new Rectangle(x * 16 - 300, y * 16 - 300, 600, 600);
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].aiStyle == 20)
 				{
@@ -41646,7 +41647,7 @@ namespace Terraria
 				{
 					this.npcNameLookup = 1;
 					int number = -1;
-					for (int j = 0; j < 200; j++)
+					for (int j = 0; j < NPC.MaxNPCs; j++)
 					{
 						if (Main.npc[j] == this)
 						{
@@ -42118,7 +42119,7 @@ namespace Terraria
 					if (this.immune[255] == 0)
 					{
 						Rectangle rectangle = new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height);
-						for (int n = 0; n < 200; n++)
+						for (int n = 0; n < NPC.MaxNPCs; n++)
 						{
 							if (Main.npc[n].active && !Main.npc[n].friendly && Main.npc[n].damage > 0)
 							{
@@ -42918,7 +42919,7 @@ namespace Terraria
 			bool flag15 = false;
 			bool flag16 = false;
 			bool flag17 = false;
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < NPC.MaxNPCs; i++)
 			{
 				if (Main.npc[i].active)
 				{

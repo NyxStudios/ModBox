@@ -898,7 +898,7 @@ namespace Terraria
 		public static Dust[] dust = new Dust[6001];
 		public static Star[] star = new Star[130];
 		public static Item[] item = new Item[401];
-		public static NPC[] npc = new NPC[201];
+		public static NPC[] npc = new NPC[NPC.MaxNPCs];
 		public static Gore[] gore = new Gore[501];
 		public static Rain[] rain = new Rain[Main.maxRain + 1];
 		public static Projectile[] projectile = new Projectile[1001];
@@ -4925,7 +4925,7 @@ namespace Terraria
 			{
 				Main.item[num7] = new Item();
 			}
-			for (int num8 = 0; num8 < 201; num8++)
+			for (int num8 = 0; num8 < NPC.MaxNPCs; num8++)
 			{
 				Main.npc[num8] = new NPC();
 				Main.npc[num8].whoAmI = num8;
@@ -5135,8 +5135,8 @@ namespace Terraria
 			try
 			{
 				this.mapSectionTexture = new RenderTarget2D(base.GraphicsDevice, 200, 150);
-				Main.pixelShader = base.Content.Load<Effect>("pixelShader");
-				Main.tileShader = base.Content.Load<Effect>("tileShader");
+				Main.pixelShader = base.Content.Load<Effect>("PixelShader");
+				Main.tileShader = base.Content.Load<Effect>("TileShader");
 				Main.engine = new AudioEngine("Content" + Path.DirectorySeparatorChar + "TerrariaMusic.xgs");
 				Main.soundBank = new SoundBank(Main.engine, "Content" + Path.DirectorySeparatorChar + "Sound Bank.xsb");
 				Main.waveBank = new WaveBank(Main.engine, "Content" + Path.DirectorySeparatorChar + "Wave Bank.xwb");
@@ -36653,16 +36653,13 @@ namespace Terraria
 				if (c >= 28)
 				{
 					int index = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index].Apply();
 				}
 				else if (c > 0 && c < 13)
 				{
 					int index2 = c + 27;
-					Main.tileShader.CurrentTechnique.Passes[index2].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.treeTopTexture[t], new Rectangle(0, 0, Main.treeTopTexture[t].Width, Main.treeTopTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -36673,16 +36670,13 @@ namespace Terraria
 				if (c >= 28)
 				{
 					int index3 = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index3].Apply();
 				}
 				else if (c > 0 && c < 13)
 				{
 					int index4 = c + 27;
-					Main.tileShader.CurrentTechnique.Passes[index4].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.treeBranchTexture[t], new Rectangle(0, 0, Main.treeBranchTexture[t].Width, Main.treeBranchTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
@@ -36709,16 +36703,13 @@ namespace Terraria
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 				if (c == 30)
 				{
-					Main.tileShader.CurrentTechnique.Passes[43].Apply();
 				}
 				else if (c >= 28)
 				{
 					int index = 40 + c - 28;
-					Main.tileShader.CurrentTechnique.Passes[index].Apply();
 				}
 				else
 				{
-					Main.tileShader.CurrentTechnique.Passes[c].Apply();
 				}
 				Main.spriteBatch.Draw(Main.wallTexture[t], new Rectangle(0, 0, Main.wallTexture[t].Width, Main.wallTexture[t].Height), Color.White);
 				Main.spriteBatch.End();
