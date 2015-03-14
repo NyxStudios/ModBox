@@ -1,6 +1,6 @@
 # ModBox
 
-ModBox is the next-generation of Terraria modding. While [TShock](https://github.com/NyxStudios/TShock) is our premier offering for stock server software & stock clients, ModBox aims to deliver a better experience by controlling both the server and the client.
+ModBox is the next-generation of Terraria modding. ModBox aims to allow servers and clients to have a completely new experience, replacing as much Terraria with custom content as possible. Join a server with a vanilla ModBox client, and download custom sprites, music, and game rules. While [TShock](https://github.com/NyxStudios/TShock) is our premier offering server software for stock clients, ModBox aims to deliver a better experience by controlling both the server and the client. 
 
 ## Client & Piracy
 
@@ -8,12 +8,12 @@ In order to deter piracy, we will not be providing the content from Terraria to 
 
 ## Current Features
 
-* It compiles, and it works (on Windows)
+* It compiles, and it works (on Windows, and to a limited extent, Linux)
 
 ## Planned Features
 
 * Improved server & client protocol security
-* Improved server limits & 
+* Improved server limits; pushes the engine to its safe bounds when useful
 * Custom content delivery pipeline
 * Open & free API
 
