@@ -99,5 +99,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Microsoft.Xna.Framework.RuntimeProfile" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientApi\ClientApi.csproj">
+      <Project>{26217A62-D91E-4871-AB3C-03EA6FCD95B9}</Project>
+      <Name>ClientApi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
