@@ -8,7 +8,7 @@ In order to deter piracy, we will not be providing the content from Terraria to 
 
 ## Current Features
 
-* It compiles, and it works (on Windows, and to a limited extent, Linux)
+* It compiles, and it works (on Windows only)
 
 ## Planned Features
 
