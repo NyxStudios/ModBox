@@ -1,0 +1,47 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Recipe",
+    "description": "A Terraria Recipe",
+    "type": "object",
+	"properties": {
+        "createItem": {
+            "description": "The result of this recipe",
+			"$ref": "#/definitions/item"
+        },
+		"requiredItems": {
+            "description": "The items required for this recipe",
+			"type": "array",
+			"minItems": 1,
+			"maxItems": 15,
+			"items": { "ref": "#/definitions/item" }
+        },
+		"requiredTiles": {
+            "description": "The tiles required to craft this recipe",
+			"type": "array",
+			"minItems": 0,
+			"maxItems": 15,
+			"items": { "type": "integer" }
+        }
+    },
+	"required": ["createItem", "requiredItems", "requiredTiles"],
+	"definitions": {
+		"item": {
+			"properties": {
+				"stack": {
+					"description": "The number of items created.",
+					"type": "integer",
+					"minimum": 1
+				},
+				"netId": {
+					"description": "The item type created.",
+					"type": "integer"
+				},
+				"prefix": {
+					"description": "The prefix given to the items created.",
+					"type": "integer"
+				}
+			},
+			"required": ["stack", "netId"]
+		}
+	}
+}
