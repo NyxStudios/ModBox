@@ -21,7 +21,35 @@
 			"minItems": 0,
 			"maxItems": 15,
 			"items": { "type": "integer" }
-        }
+        },
+		"needHoney": {
+			"desciption": "This item requires honey to craft.",
+			"type": "boolean"
+		},
+		"needWater": {
+			"desciption": "This item requires water to craft.",
+			"type": "boolean"
+		},
+		"needLava": {
+			"desciption": "This item requires lava to craft.",
+			"type": "boolean"
+		},
+		"anyWood": {
+			"desciption": "This item can use any type of wood to craft.",
+			"type": "boolean"
+		},
+		"anyIronBar": {
+			"desciption": "This item can use any type of iron bar to craft.",
+			"type": "boolean"
+		},
+		"anyPressurePlate": {
+			"desciption": "This item can use any type of pressure plate to craft.",
+			"type": "boolean"
+		},
+		"anySand": {
+			"desciption": "This item can use any type of sand to craft.",
+			"type": "boolean"
+		}
     },
 	"required": ["createItem", "requiredItems", "requiredTiles"],
 	"definitions": {
